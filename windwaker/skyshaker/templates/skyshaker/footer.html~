@@ -1,43 +1,43 @@
 <footer>
-    <div id = "footer-top">    
-        <div class = "left-75" >
-            <div class = "footer-block">
-                <div><a><b>About us</b></a></div>
-                <div><a>Contact</a></div>
-                <div><a>Team</a></div>
-                <div><a>Donate</a></div>
-                <div><a>Resources</a></div>
-                <div><a>What is GeoMakers?</a></div>
-            </div>
-            <div class = "footer-block">
-                <div><a><b>Contributors</b></a></div>
-                <div><a>GeoDreamers</a></div>
-                <div><a>GeoMakers</a></div>
-                <div><a>GeoBoosters</a></div>
-                <div><a>GeoContests</a></div>
-            </div>
-            <div class = "footer-block">
-                <div><a><b>Help</b></a></div>
-                <div><a>Terms of Use</a></div>
-                <div><a>Private Policy</a></div>
-                <div><a>Support</a></div>
-            </div>
-        </div>
-        <div class = "right-25">
-            <div id = "footer-connect">
-                <div><a><b>Connect</b></a></div>
-                <div><img></img><a>Facebook</a></div>
-                <div><img></img><a>Twitter</a></div>
-                <div><img></img><a>Instagram</a></div>
-                <div><img></img><a>LinkedIn</a></div>
-                <div><img></img><a>YouTube</a></div>
-                <div><img></img><a>Vine</a></div>
-            </div>
-        </div>
-    </div>
-    <div id = "footer-bottom" style="padding: 20px 50px 20px 50px;">
-        <hr></hr>
-        <div class = "left-75">GEOMAKERS</div>
-        <div class = "right-25">&copy; 2014 GeoMakers</div>      
-    </div>
+<table>
+<tbody>
+<tr>
+    <td><div>
+        <div><a><b>About us</b></a></div>
+        <div><a>Contact</a></div>
+        <div><a>Team</a></div>
+        <div><a>Donate</a></div>
+        <div><a>Resources</a></div>
+        <div><a>What is GeoMakers?</a></div>
+    </div></td>
+    <td><div>
+        <div><a><b>Contributors</b></a></div>
+        <div><a>GeoDreamers</a></div>
+        <div><a>GeoMakers</a></div>
+        <div><a>GeoBoosters</a></div>
+        <div><a>GeoContests</a></div>
+    </div></td>
+    <td><div>
+        <div><a><b>Help</b></a></div>
+        <div><a>Terms of Use</a></div>
+        <div><a>Private Policy</a></div>
+        <div><a>Support</a></div>
+    </div></td>
+    <td></td>
+    <td><div>
+        <div><a><b>Connect</b></a></div>
+        <div><img></img><a>Facebook</a></div>
+        <div><img></img><a>Twitter</a></div>
+         <div><img></img><a>Instagram</a></div>
+        <div><img></img><a>LinkedIn</a></div>
+        <div><img></img><a>YouTube</a></div>
+        <div><img></img><a>Vine</a></div>
+    </div></td>
+</tr>
+</tbody>
+</table>
+<table><tbody><tr>
+    <td>GEOMAKERS</td>
+    <td>&copy; 2014 GeoMakers</td>  
+</tr></tbody></table>s
 </footer>

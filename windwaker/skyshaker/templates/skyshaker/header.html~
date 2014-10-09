@@ -1,5 +1,11 @@
 <header>
-<div id="header-title">GEOMAKERS</div>
-<div></div>
-<div><a style="text-decoration: none; color: rgb(245, 91, 41);">Donate</a></div>
+<table>
+<tbody>
+<tr>
+<td id="header-geomakers">GEOMAKERS</td>
+<td id="header-search">SEARCH</td>
+<td id="header-donate"><a style="text-decoration: none; color: rgb(245, 91, 41);">Donate</a></td>
+</tr>
+</tbody>
+</table>
 </header>
