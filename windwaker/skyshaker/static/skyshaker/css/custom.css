@@ -1,5 +1,5 @@
 * {box-sizing: border-box;}
-html{background-color: rgb(243,241,242);}
+html{}
 body{padding: 0; margin: 0; border: 0;}
 .left{width: 49%; display: inline-block;}
 .right{width: 49%; display: inline-block; text-align: right;}
@@ -9,7 +9,7 @@ header table tr td{vertical-align: middle;}
 #header-title{width: 300px; border-right: 1px solid rgb(221,222,226); padding-left: 15px;}
 #header-search{text-align: center;}
 #header-donate{padding-right: 40px; text-align: right;}
-footer{color: white; padding: 20px 50px 20px 50px;}
+footer{color: white; padding: 20px 50px 20px 50px; background-color: rgb(138,121,11);}
 footer table{width: 100%; height: 100%;}
 footer table:first-child {border-bottom: 1px solid rgb(208,208,208); padding-bottom: 10px;}
 footer table:first-child tbody tr td{vertical-align: top;}
@@ -18,9 +18,48 @@ footer table:last-child {padding-top: 20px;}
 footer table:last-child tbody tr td{width: 50%;}
 footer table:last-child tbody tr td:last-child{text-align: right;}
 
-#donate-middle{padding: 35px 20px 90px 20px; text-align: center}
-#donate-message{display: inline-block; vertical-align: top; max-width: 650px; background-color: white; padding: 20px; margin-right: 15px;}
-#donate-pay{display: inline-block; vertical-align: top; max-width: 315px; background-color: white;padding: 20px; margin-left: 15px;}
+#home-middle{}
+#home-part-1{padding: 50px 40px 40px 40px; height: 710px;}
+#home-part-1-wrapper{max-width: 1000px;margin: 0px auto;}
+    #home-video{max-width: 725px; max-height: 410px; width: 100%; height: 100%; background-color: red;}
+    #home-start{display: inline-block; vertical-align: top; padding: 15px 10px 15px 10px; max-width: 245px;}
 
-h1{color: rgb(241,75,35); font-size: 25px;}
-h2{color: rgb(120,120,120); font-size: 15px;}
+#home-part-2{background-color: #D9D9DE; padding: 50px 20px 40px 20px; text-align: center;}
+    #home-dream, #home-make, #home-boost{width: 305px; height: 360px; display: inline-block; vertical-align: top;}
+
+    .hexagon{background-color: none; display: inline-block;}
+    .hexagon-left{float: left;border-right: 60px solid rgb(241,75,35); border-top: 104px solid transparent; border-bottom: 104px solid transparent;}
+    .hexagon-middle{float: left; width: 100px; height: 208px; background-color: rgb(241,75,35);}
+    .hexagon-right{float: left;border-left: 60px solid rgb(241,75,35); border-top: 104px solid transparent; border-bottom: 104px solid transparent;}
+    .hexagon:hover .hexagon-left{border-right: 60px solid black;}
+    .hexagon:hover .hexagon-middle{background-color: black;}
+    .hexagon:hover .hexagon-right{border-left: 60px solid black;}
+    .home-textunderhex{width: 145px; margin: 0 auto; font-size: 10px; height: 75px;}
+
+#home-part-3{max-width: 900px; margin: 0 auto;}
+#home-part-3 table{width: 100%;}
+#home-part-3 td{width: 50%;}
+#home-popular{}
+#home-see_all{text-align: right;}
+#home-projects{text-align: center;}
+.home-project{width: 205px; height: 340px; border: 1px solid rgb(149,149,149); border-radius: 15px; margin: 10px; display: inline-block; vertical-align: top;}
+.home-project:first-child{margin-left:0px;}
+.home-project:last-child{margin-right:0px;}
+.home-project img{height: 130px; width: 100%; border-top-left-radius: 14px; border-top-right-radius: 14px;}
+.home-project-text{padding: 15px; text-align: left; font-size: 10px;}
+.home-project-builds, .home-project-shoutouts{max-width: 60px; display: inline-block; padding: 5px;}
+.home-project-number{font-weight: bold;}
+
+#donate-middle{padding: 35px 20px 90px 20px; text-align: center}
+#donate-message{display: inline-block; vertical-align: top; max-width: 650px; background-color: white; padding: 20px; margin-right: 15px; text-align: left; margin-bottom: 30px;}
+#donate-pay{display: inline-block; vertical-align: top; max-width: 315px; background-color: white;padding: 20px; margin-left: 15px; text-align: left;}
+
+h1{color: rgb(241,75,35); font-size: 25px; text-align: left;}
+h2{color: rgb(120,120,120); font-size: 15px; text-align: left;}
+
+.button1{max-width: 180px; background-color: rgb(242,90,41); padding: 15px; border-radius: 10px; color: rgb(254,254,254); cursor: pointer; box-shadow: 1px 1px 1px #888888;}
+.button2{max-width: 120px; background-color: rgb(242,90,41); padding: 10px 15px 15px 15px; border-radius: 10px; color: rgb(254,254,254); cursor: pointer; box-shadow: 1px 1px 1px #888888; height: 40px;font-size: 15px; margin: 0 auto;}
+
+.bg-purple{background-color: #8F0AD7;}
+.bg-blue{background-color: #0A90D7;}
+.bg-green{background-color: #0AD786;}
