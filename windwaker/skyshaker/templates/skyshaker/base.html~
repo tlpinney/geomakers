@@ -12,9 +12,6 @@
 <link rel="stylesheet" href="{% static 'skyshaker/css/custom.css' %}">
 </head>
 <body>
-<style>
-
-</style>
 {% include "skyshaker/header.html" %}
 {% block content %}
 {% endblock %}
