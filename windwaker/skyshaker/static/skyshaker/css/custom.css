@@ -62,9 +62,16 @@ footer table:last-child tbody tr td:last-child{text-align: right;}
 #donate-pay{display: inline-block; vertical-align: top; max-width: 315px; background-color: white;padding: 20px; margin-left: 15px; text-align: left;}
 
 #project-middle{background-color: rgb(245,245,245); padding: 0px 30px 30px 30px;}
-#project-left{width: 620px; border: 2px solid rgb(85,164,241); padding: 35px 30px 15px 30px; text-align: left; border-radius: 5px; background-color: white;}
-#project-left-left{width: 50%;}
+#project-left{width: 600px; border: 2px solid rgb(85,164,241); padding: 35px 30px 15px 30px; text-align: left; border-radius: 5px; background-color: white; display: inline-block; vertical-align: left; margin-bottom: 20px;}
+#project-left-left{width: 48%; display: inline-block; vertical-align: top;}
+#project-left-right{width: 48%; display: inline-block; vertical-align: top; text-align: center;}
 #project-left-bottom{text-align: center;}
+.project-image-caption{font-size: 10pt;}
+#project-right{display: inline-block; vertical-align: top; padding: 0px 30px 30px 30px; margin-bottom: 20px;}
+#project-right > div{background-color: white; border: 1px solid rgb(230,230,230); padding: 0px 20px 20px 20px; margin-bottom: 20px;}
+.star{font-size: 16pt; color: #F55B29;}
+.starFilled{}
+.starUnfilled{}
 
 h1{color: rgb(241,75,35); font-size: 25px; text-align: left;}
 h2{color: rgb(120,120,120); font-size: 15px; text-align: left;}

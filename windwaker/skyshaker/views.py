@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from skyshaker.models import Project, Tag
+from django.conf import settings
 
 def index(request):
     return render(request, 'skyshaker/index.html')

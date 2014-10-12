@@ -9,4 +9,4 @@ def donate(request):
 
 def project(request, slug):
     project = get_object_or_404(Project, slug=slug)
-    return render(request, 'skyshaker/project.html', {'slug': slug})
+    return render(request, 'skyshaker/project.html', {'project': project})
