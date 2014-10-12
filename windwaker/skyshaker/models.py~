@@ -1,13 +1,20 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
 import os, re
 
-class Profile(models.Model):
+class UserProfile(models.Model):
+    # This line is required.  Links UserProfile to a User model instance.
+    user = models.OneToOneField(User, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     location = models.CharField(max_length=200, null=True, blank=True)
     facebook = models.URLField(default="", null=True, blank=True)
     twitter = models.URLField(default="", null=True, blank=True)
     linkedin = models.URLField(default="", null=True, blank=True)
+    picture = models.ImageField(upload_to="images", null=True, blank=True)
+    slug = models.SlugField(unique=True, null=True, blank=True)
+    def __str__(self):
+        return self.user.username
 
 class Image(models.Model):
     image = models.ImageField(upload_to="images", null=True, blank=True)
@@ -72,7 +79,7 @@ def updateRatingAsString(sender, instance, **kwargs):
     for i in range(0,instance.rating):
         ratingAsString += "<span class='star starFilled'>&#9733;</span>"
     for i in range(0,5-instance.rating):
-        ratingAsString += "<span class='star starFilled'>&#9734;</span>"
+        ratingAsString += "<span class='star starUnfilled'>&#9734;</span>"
     instance.ratingAsString = ratingAsString
     post_save.disconnect(updateRatingAsString, sender=Project)
     instance.save()

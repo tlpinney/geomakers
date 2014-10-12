@@ -1,4 +1,4 @@
-* {box-sizing: border-box;}
+* {box-sizing: border-box; -moz-box-sizing: border-box;}
 html{background-color: rgb(245,245,245);}
 body{padding: 0; margin: 0; border: 0;}
 .left{width: 49%; display: inline-block;}
@@ -30,6 +30,12 @@ footer table:last-child tbody tr td:last-child{text-align: right;}
 #home-part-1-wrapper{max-width: 1000px;margin: 0px auto;}
     #home-video{max-width: 725px; max-height: 410px; width: 100%; height: 100%; background-color: red;}
     #home-start{display: inline-block; vertical-align: top; padding: 15px 10px 15px 10px; max-width: 245px;}
+    #home-signup-disclaimer{text-align: center; font-size: 10pt; margin: 40px 0px; display: none;}
+    #home-signup-withemail{text-decoration: none; display:none;}
+    #homeStartButton {display: none;}
+    #homeStartButton:checked + label{display: none;}
+    #homeStartButton:checked ~ #home-signup-withemail{display: block;}
+    #homeStartButton:checked ~ #home-signup-disclaimer{display: block;}
 
 #home-part-2{background-color: rgb(249,249,251); padding: 50px 20px 40px 20px; text-align: center; border-bottom: 1px solid rgb(211,213,212);}
     #home-dream, #home-make, #home-boost{width: 305px; height: 360px; display: inline-block; vertical-align: top;}
@@ -72,6 +78,12 @@ footer table:last-child tbody tr td:last-child{text-align: right;}
 .star{font-size: 16pt; color: #F55B29;}
 .starFilled{}
 .starUnfilled{}
+
+#profile-middle-top{height: 140px; width: 100%; background-color: rgb(229, 238, 243); text-align: left; padding: 20px 40px 20px 40px;}
+#profile-middle-top-left, #profile-middle-top-right{height: 100%; display: inline-block; vertical-align: top;}
+#profile-pic{height: 100px; width: auto;}
+#profile-name{font-weight: bold; font-size: 16pt;}
+
 
 h1{color: rgb(241,75,35); font-size: 25px; text-align: left;}
 h2{color: rgb(120,120,120); font-size: 15px; text-align: left;}

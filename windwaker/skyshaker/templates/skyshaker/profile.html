@@ -1,0 +1,15 @@
+{% extends "skyshaker/base.html" %}
+{% block content %}
+<div id="profile-middle">
+<div id="profile-middle-top">
+    <div id="profile-middle-top-left">
+        <img id="profile-pic" src="{{userProfile.picture.url}}">
+    </div>
+    <div id="profile-middle-top-right">
+        <div id="profile-name">{{user.first_name}} {{user.last_name}}</div>
+    </div>
+</div>
+<div id="profile-middle-bottom">
+</div>
+</div>
+{% endblock %}

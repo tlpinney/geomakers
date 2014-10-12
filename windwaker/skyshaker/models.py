@@ -1,13 +1,19 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
 import os, re
 
-class Profile(models.Model):
+class UserProfile(models.Model):
+    # This line is required.  Links UserProfile to a User model instance.
+    user = models.OneToOneField(User, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     location = models.CharField(max_length=200, null=True, blank=True)
     facebook = models.URLField(default="", null=True, blank=True)
     twitter = models.URLField(default="", null=True, blank=True)
     linkedin = models.URLField(default="", null=True, blank=True)
+    picture = models.ImageField(upload_to="images", null=True, blank=True)
+    def __str__(self):
+        return self.user.username
 
 class Image(models.Model):
     image = models.ImageField(upload_to="images", null=True, blank=True)

@@ -88,3 +88,6 @@ TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #absolute path to the media directory
+
+# URL to redirect to when access restricted page
+LOGIN_URL = '/login/'

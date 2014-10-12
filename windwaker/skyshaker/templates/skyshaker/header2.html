@@ -1,8 +1,9 @@
 <div id ="header2">
-    <a><div>Profile</div></a>    
+    {% if user.is_authenticated %}<a><div>Profile</div></a>{% endif %}
     <a><div>GeoDreamer</div></a>
     <a><div>GeoMaker</div></a>
     <a><div>GeoBooster</div></a>
     <a><div>Resources</div></a>
     <a><div>MakerSpaces</div></a>
+    {% if user.is_authenticated %}<a href={% url 'logout' %}><div>Logout</div></a>{% endif %}
 </div>

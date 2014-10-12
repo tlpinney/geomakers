@@ -1,0 +1,20 @@
+{% extends "skyshaker/base.html" %}
+{% block content %}
+{% if registered %}
+GM says: thanks for registering
+<a href="/skyshaker/">Return to the homepage</a>
+{% else %}
+GM says: register here!
+
+<form id="user_form" method="post" action="/skyshaker/register/"
+    enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    {{ user_form.as_p }}
+    {{ profile_form.as_p }}
+
+    <input type="submit" name="submit" value="Register" />
+</form>
+{% endif %}
+{% endblock %}

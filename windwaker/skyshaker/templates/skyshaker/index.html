@@ -3,9 +3,13 @@
 <div id="home-middle">
 <div id="home-part-1">
     <div id="home-part-1-wrapper">
-        <video id="home-video"></video>
+        <iframe src="//www.youtube.com/embed/poMGRbfgp38" allowfullscreen="" frameborder="0" height="315" width="560"></iframe>
         <div id="home-start">
-            <div class="button1">Start Here Button</div>
+            <input type="radio" id="homeStartButton">
+            <label class="button1" for="homeStartButton">Start Here Button</label>
+            <a id="home-signup-withemail" href={% url 'register' %}>Sign up with email</a>
+            <p id="home-signup-disclaimer">By clicking "Sign up" you agree to our Terms of Service and Privacy Policy.</p>
+            <a href={% url 'login' %}><div class="button1" style="margin-top: 50px;">Login</div></a>
         </div>
     </div>
 </div>
