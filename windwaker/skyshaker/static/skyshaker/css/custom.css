@@ -1,14 +1,21 @@
 * {box-sizing: border-box;}
-html{}
+html{background-color: rgb(245,245,245);}
 body{padding: 0; margin: 0; border: 0;}
 .left{width: 49%; display: inline-block;}
 .right{width: 49%; display: inline-block; text-align: right;}
-header{background-color: white; height: 56px;}
+header{background-color: white; height: 56px; border-bottom: 1px solid rgb(204,204,204);}
 header table{width: 100%; height: 100%;}
 header table tr td{vertical-align: middle;}
 #header-title{width: 300px; border-right: 1px solid rgb(221,222,226); padding-left: 15px;}
 #header-search{text-align: center;}
 #header-donate{padding-right: 40px; text-align: right;}
+
+#header2{height: 40px; background-color: rgb(247,247,247); border-bottom: 1px solid rgb(204,204,204); text-align: center;}
+#header2 a{display: inline-block; height: 40px; cursor: pointer;}
+#header2 a:hover {border-bottom: 1px solid rgb(49,143,239);}
+#header2 a div{font-size: 14px; padding-top: 13px; margin:0px 20px 0px 20px;}
+
+
 footer{color: white; padding: 20px 50px 20px 50px; background-color: rgb(138,121,11);}
 footer table{width: 100%; height: 100%;}
 footer table:first-child {border-bottom: 1px solid rgb(208,208,208); padding-bottom: 10px;}
@@ -24,7 +31,7 @@ footer table:last-child tbody tr td:last-child{text-align: right;}
     #home-video{max-width: 725px; max-height: 410px; width: 100%; height: 100%; background-color: red;}
     #home-start{display: inline-block; vertical-align: top; padding: 15px 10px 15px 10px; max-width: 245px;}
 
-#home-part-2{background-color: #D9D9DE; padding: 50px 20px 40px 20px; text-align: center;}
+#home-part-2{background-color: rgb(249,249,251); padding: 50px 20px 40px 20px; text-align: center; border-bottom: 1px solid rgb(211,213,212);}
     #home-dream, #home-make, #home-boost{width: 305px; height: 360px; display: inline-block; vertical-align: top;}
 
     .hexagon{background-color: none; display: inline-block;}
@@ -36,7 +43,7 @@ footer table:last-child tbody tr td:last-child{text-align: right;}
     .hexagon:hover .hexagon-right{border-left: 60px solid black;}
     .home-textunderhex{width: 145px; margin: 0 auto; font-size: 10px; height: 75px;}
 
-#home-part-3{max-width: 900px; margin: 0 auto;}
+#home-part-3{max-width: 900px; margin: 35px auto;}
 #home-part-3 table{width: 100%;}
 #home-part-3 td{width: 50%;}
 #home-popular{}
@@ -54,8 +61,14 @@ footer table:last-child tbody tr td:last-child{text-align: right;}
 #donate-message{display: inline-block; vertical-align: top; max-width: 650px; background-color: white; padding: 20px; margin-right: 15px; text-align: left; margin-bottom: 30px;}
 #donate-pay{display: inline-block; vertical-align: top; max-width: 315px; background-color: white;padding: 20px; margin-left: 15px; text-align: left;}
 
+#project-middle{background-color: rgb(245,245,245); padding: 0px 30px 30px 30px;}
+#project-left{width: 620px; border: 2px solid rgb(85,164,241); padding: 35px 30px 15px 30px; text-align: left; border-radius: 5px; background-color: white;}
+#project-left-left{width: 50%;}
+#project-left-bottom{text-align: center;}
+
 h1{color: rgb(241,75,35); font-size: 25px; text-align: left;}
 h2{color: rgb(120,120,120); font-size: 15px; text-align: left;}
+h3{color: rgb(120,120,120); font-size: 20px; text-align: left;}
 
 .button1{max-width: 180px; background-color: rgb(242,90,41); padding: 15px; border-radius: 10px; color: rgb(254,254,254); cursor: pointer; box-shadow: 1px 1px 1px #888888;}
 .button2{max-width: 120px; background-color: rgb(242,90,41); padding: 10px 15px 15px 15px; border-radius: 10px; color: rgb(254,254,254); cursor: pointer; box-shadow: 1px 1px 1px #888888; height: 40px;font-size: 15px; margin: 0 auto;}

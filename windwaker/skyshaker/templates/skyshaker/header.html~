@@ -2,10 +2,13 @@
 <table>
 <tbody>
 <tr>
-<td id="header-geomakers">GEOMAKERS</td>
+<td id="header-title">GEOMAKERS</td>
 <td id="header-search">SEARCH</td>
-<td id="header-donate"><a style="text-decoration: none; color: rgb(245, 91, 41);">Donate</a></td>
+<td id="header-donate"><a style="text-decoration: none; color: rgb(245, 91, 41);" href={% url 'donate' %}>Donate</a></td>
 </tr>
 </tbody>
 </table>
 </header>
+<div id ="header2">
+
+</div>
