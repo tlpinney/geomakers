@@ -49,6 +49,7 @@ class MakerSpace(models.Model):
     url = models.URLField(default="", null=True, blank=True)
 
 class Project(models.Model):
+    owner = models.OneToOneField(User, null=True, blank=True)
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, null=True, blank=True)
     abstract = models.TextField()
@@ -58,6 +59,9 @@ class Project(models.Model):
     images = models.ManyToManyField('Image', blank=True)
     rating = models.IntegerField(null=True, blank=True)
     ratingAsString = models.TextField(null=True, blank=True)
+    typeOfProject = models.CharField(max_length=200,null=True, blank=True, choices=(("GeoDream","GeoDream"),("GeoRecipe","GeoRecipe"),("GeoBoost","GeoBoost")))
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True, editable=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True, blank=True, editable=True)
     def __str__(self):
         return self.title
 

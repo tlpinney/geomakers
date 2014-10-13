@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     url(r'^donate/', views.donate, name='donate'),
     url(r'projects/(?P<slug>[^\.]+)', views.project, name='project'),
-    url(r'^profiles/$', views.profile, name='profile'),
+    url(r'^profiles/(?P<slug>[^\.]+)', views.profile, name='profile'),
 )
 
 if settings.DEBUG:

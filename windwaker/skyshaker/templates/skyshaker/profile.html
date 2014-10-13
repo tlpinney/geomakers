@@ -6,7 +6,12 @@
         <img id="profile-pic" src="{{userProfile.picture.url}}">
     </div>
     <div id="profile-middle-top-right">
-        <div id="profile-name">{{user.first_name}} {{user.last_name}}</div>
+        <span id="profile-name">{{user.first_name}} {{user.last_name}}</span>
+        </br>
+        {% if userProfile.location %}<span id="profile-location">{{ userProfile.location }} &#8226;</span>{% endif %}
+        <span id="profile-date_joined">Joined {{ user.date_joined|date:"M Y" }}</span>
+        </br>
+        {% if userProfile.description %}<span id="profile-description">{{ userProfile.description }}</span>{% endif %}
     </div>
 </div>
 <div id="profile-middle-bottom">

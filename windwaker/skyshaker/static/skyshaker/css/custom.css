@@ -83,7 +83,21 @@ footer table:last-child tbody tr td:last-child{text-align: right;}
 #profile-middle-top-left, #profile-middle-top-right{height: 100%; display: inline-block; vertical-align: top;}
 #profile-pic{height: 100px; width: auto;}
 #profile-name{font-weight: bold; font-size: 16pt;}
+#profile-middle-top-right{max-width: 600px; font-size: 10pt;}
 
+#search-middle{padding: 20px;}
+#search-projects{padding: 30px;}
+.search-project{height: 250px; width: 300px; border-radius: 10px;}
+.search-project-GeoDream{border: 2px solid #8F0AD7;}
+.search-project-GeoRecipe{border: 2px solid #0A90D7;}
+.search-project-GeoBoost{border: 2px solid #0AD786;}
+.search-project-image{position: absolute; height: 200px; width: 300px;}
+.search-project-top{padding: 2px;}
+.search-project-image-owner{width: 30px; height: 30px; border-radius: 50px; border:2px solid white;}
+.search-project-text{display: inline-block; vertical-align: top; color: white;}
+.search-project-title{vertical-align: top; font-size: 10pt; color: white; text-shadow: 1px 1px 0 #000;}
+.search-project-author{font-size: 10pt;  color: #D9D9DE; text-shadow: 1px 1px 0 #000;}
+.search-project-datetime{display: inline-block; font-size: 8pt;}
 
 h1{color: rgb(241,75,35); font-size: 25px; text-align: left;}
 h2{color: rgb(120,120,120); font-size: 15px; text-align: left;}

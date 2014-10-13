@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     url(r'^donate/', views.donate, name='donate'),
     url(r'projects/(?P<slug>[^\.]+)', views.project, name='project'),
     url(r'^profiles/(?P<slug>[^\.]+)', views.profile, name='profile'),
+    url(r'^search/$', views.search, name='search'),
 )
 
 if settings.DEBUG:

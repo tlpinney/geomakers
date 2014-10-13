@@ -23,6 +23,10 @@ def profile(request, slug):
     userProfile = get_object_or_404(UserProfile, user=user)
     return render(request, 'skyshaker/profile.html', {'user': user, 'userProfile': userProfile})
 
+def search(request):
+    projects = Project.objects.all()
+    return render(request, 'skyshaker/search.html', {'projects': projects})
+
 def register(request):
     # Like before, get the request's context.
     context = RequestContext(request)

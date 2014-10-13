@@ -12,7 +12,6 @@ class UserProfile(models.Model):
     twitter = models.URLField(default="", null=True, blank=True)
     linkedin = models.URLField(default="", null=True, blank=True)
     picture = models.ImageField(upload_to="images", null=True, blank=True)
-    slug = models.SlugField(unique=True, null=True, blank=True)
     def __str__(self):
         return self.user.username
 
@@ -50,6 +49,7 @@ class MakerSpace(models.Model):
     url = models.URLField(default="", null=True, blank=True)
 
 class Project(models.Model):
+    owner = models.OneToOneField(User, null=True, blank=True)
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, null=True, blank=True)
     abstract = models.TextField()
@@ -59,6 +59,9 @@ class Project(models.Model):
     images = models.ManyToManyField('Image', blank=True)
     rating = models.IntegerField(null=True, blank=True)
     ratingAsString = models.TextField(null=True, blank=True)
+    typeOfProject = models.CharField(max_length=200,null=True, blank=True, choices=(("GeoDream","GeoDream"),("GeoRecipe","GeoRecipe"),("GeoBoost","GeoBoost")))
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
     def __str__(self):
         return self.title
 

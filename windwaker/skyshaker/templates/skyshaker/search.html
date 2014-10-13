@@ -1,0 +1,29 @@
+{% extends "skyshaker/base.html" %}
+{% block content %}
+<div id="search-middle">
+    <div id="search-show">
+        <span>Show: </span>
+        <label>GeoDreams<label>
+        <label>GeoRecipes</label>
+        <label>GeoBoosts</label>
+    </div>
+    <div id="search-sort_by">Sort by: </div>
+    <div id="search-view_as">View as: </div>
+    <div id="search-projects">
+        {% for project in projects %}           
+        <div class="search-project search-project-{{project.typeOfProject}}">
+            <img src="{{ project.images.all.0.image.url }}" class="search-project-image"/>
+            <div class="search-project-top">
+                <img src="{{ project.owner.userprofile.picture.url }}" class="search-project-image-owner"/>
+                <div class="search-project-text">
+                    <span class="search-project-title">{{ project.title }}</span>
+                    <span class="search-project-datetime">{{ project.updated_at|timesince }} ago</span>
+                    </br>
+                    <span class="search-project-author">{{ project.owner.first_name }} {{ project.owner.last_name }}</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
