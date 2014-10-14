@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     url(r'^logout/$', views.user_logout, name='logout'),
     url(r'^profiles/$', views.profile, name='profile'),
     url(r'^search/$', views.search, name='search'),
+    url(r'^geodream/$', views.geodream, name='geodream'),
 )
 
 if settings.DEBUG:

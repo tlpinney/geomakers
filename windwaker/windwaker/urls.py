@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     url(r'projects/(?P<slug>[^\.]+)', views.project, name='project'),
     url(r'^profiles/(?P<slug>[^\.]+)', views.profile, name='profile'),
     url(r'^search/$', views.search, name='search'),
+    url(r'^geodream/$', views.geodream, name='geodream'),
 )
 
 if settings.DEBUG:

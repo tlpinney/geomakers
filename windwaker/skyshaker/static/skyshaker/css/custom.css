@@ -99,6 +99,15 @@ footer table:last-child tbody tr td:last-child{text-align: right;}
 .search-project-author{font-size: 10pt;  color: #D9D9DE; text-shadow: 1px 1px 0 #000;}
 .search-project-datetime{display: inline-block; font-size: 8pt;}
 
+.submit-header{font-size: 18pt; color: white; margin-bottom: 10px;}
+#geodream-middle{background-color: #8F0AD7; padding: 30px;}
+.submit-panel{padding: 30px; background-color: white; border-radius: 10px; border: 2px solid rgb(204,204,204);}
+.submit-part{margin: 20px;}
+.submit-part label{vertical-align:top; display: block;}
+.submit-panel-left{max-width: 700px;}
+.submit-panel input, .submit-panel textarea{width: 100%;}
+
+
 h1{color: rgb(241,75,35); font-size: 25px; text-align: left;}
 h2{color: rgb(120,120,120); font-size: 15px; text-align: left;}
 h3{color: rgb(120,120,120); font-size: 20px; text-align: left;}

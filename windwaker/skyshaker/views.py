@@ -27,6 +27,22 @@ def search(request):
     projects = Project.objects.all()
     return render(request, 'skyshaker/search.html', {'projects': projects})
 
+def geodream(request):
+    if request.method == 'POST':
+        form = GeoDreamForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = GeoDreamForm()
+
+    return render(request, 'skyshaker/geodream.html', {'form': form})
+
 def register(request):
     # Like before, get the request's context.
     context = RequestContext(request)
