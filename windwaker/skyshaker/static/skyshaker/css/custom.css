@@ -24,6 +24,7 @@ footer table:first-child tbody tr td:not(:nth-child(4)){width: 150px;}
 footer table:last-child {padding-top: 20px;}
 footer table:last-child tbody tr td{width: 50%;}
 footer table:last-child tbody tr td:last-child{text-align: right;}
+footer table td div img{height: 25px;}
 
 #home-middle{}
 #home-part-1{padding: 50px 40px 40px 40px; height: 710px;}
@@ -86,8 +87,11 @@ footer table:last-child tbody tr td:last-child{text-align: right;}
 #profile-middle-top-right{max-width: 600px; font-size: 10pt;}
 
 #search-middle{padding: 20px;}
+#search-show input:checked + label{border: 1px solid green;}
+#search-show label{border: 1px solid red; margin: 5px;}
+
 #search-projects{padding: 30px;}
-.search-project{height: 250px; width: 300px; border-radius: 10px;}
+.search-project{height: 250px; width: 300px; border-radius: 10px; display: inline-block; vertical-align: top;}
 .search-project-GeoDream{border: 2px solid #8F0AD7;}
 .search-project-GeoRecipe{border: 2px solid #0A90D7;}
 .search-project-GeoBoost{border: 2px solid #0AD786;}

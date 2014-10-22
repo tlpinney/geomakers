@@ -1,20 +1,21 @@
 {% extends "skyshaker/base.html" %}
 {% block content %}
+
 <div id="search-middle">
     <div id="search-show">
         <span>Show: </span>
-        <label>GeoDreams<label>
-        <label>GeoRecipes</label>
-        <label>GeoBoosts</label>
+        <input type="checkbox" id="show-GeoDreams" name="show" checked><label for="show-GeoDreams">GeoDreams</label>
+        <input type="checkbox" id="show-GeoRecipes" name="show" checked><label for="show-GeoRecipes">GeoRecipes</label>
+        <input type="checkbox" id="show-GeoBoosts" name="show" checked><label for="show-GeoBoosts">GeoBoosts</label>
     </div>
     <div id="search-sort_by">Sort by: </div>
     <div id="search-view_as">View as: </div>
     <div id="search-projects">
         {% for project in projects %}           
         <div class="search-project search-project-{{project.typeOfProject}}">
-            <img src="{{ project.images.all.0.image.url }}" class="search-project-image"/>
+            <img src="{{ project.images.all.0.image.url }}" class="search-project-image" alt=""/>
             <div class="search-project-top">
-                <img src="{{ project.owner.userprofile.picture.url }}" class="search-project-image-owner"/>
+                <img src="{{ project.owner.userprofile.picture.url }}" class="search-project-image-owner" alt=""/>
                 <div class="search-project-text">
                     <span class="search-project-title">{{ project.title }}</span>
                     <span class="search-project-datetime">{{ project.updated_at|timesince }} ago</span>
@@ -26,4 +27,32 @@
         {% endfor %}
     </div>
 </div>
+<script>
+
+var projects = document.getElementsByClassName("search-project");
+console.log(projects);
+var geodreams = document.getElementsByClassName("search-project-GeoDream");
+var georecipes = document.getElementsByClassName("search-project-GeoRecipe");
+var geoboost = document.getElementsByClassName("search-project-GeoBoost");
+var showGeoDreams = document.getElementById("show-GeoDreams");
+var showGeoRecipes = document.getElementById("show-GeoRecipes");
+var showGeoBoosts = document.getElementById("show-GeoBoosts");
+
+function showProjects(){
+    console.log("starting showProjects");
+    console.log(geodreams);
+        if (showGeoDreams.checked){for (var s = 0; s < geodreams.length; s++){geodreams[s].style.display = "inline-block";}}
+        else {for (var s = 0; s < geodreams.length; s++){geodreams[s].style.display = "none";}}
+        if (showGeoRecipes.checked){for (var s = 0; s < georecipes.length; s++){georecipes[s].style.display = "inline-block";}}
+        else {for (var s = 0; s < georecipes.length; s++){georecipes[s].style.display = "none";}}
+        if (showGeoBoosts.checked){for (var s = 0; s < geoboosts.length; s++){geoboosts[s].style.display = "inline-block";}}
+        else {for (var s = 0; s < geoboosts.length; s++){geoboosts[s].style.display = "none";}}
+    console.log("finishing showProjects");
+}
+
+showGeoDreams.addEventListener("change", showProjects);
+showGeoRecipes.addEventListener("change", showProjects);
+showGeoBoosts.addEventListener("change", showProjects);
+
+</script>
 {% endblock %}

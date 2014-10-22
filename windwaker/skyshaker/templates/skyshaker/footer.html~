@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <footer>
 <table>
 <tbody>
@@ -26,7 +27,7 @@
     <td></td>
     <td><div>
         <div><a><b>Connect</b></a></div>
-        <div><img></img><a>Facebook</a></div>
+        <div><img src="{% static 'skyshaker/img/social/facebook.png'%}"></img><a>Facebook</a></div>
         <div><img></img><a>Twitter</a></div>
          <div><img></img><a>Instagram</a></div>
         <div><img></img><a>LinkedIn</a></div>
@@ -39,5 +40,5 @@
 <table><tbody><tr>
     <td>GEOMAKERS</td>
     <td>&copy; 2014 GeoMakers</td>  
-</tr></tbody></table>s
+</tr></tbody></table>
 </footer>
