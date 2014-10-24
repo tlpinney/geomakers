@@ -13,6 +13,7 @@
 </head>
 <body>
 {% include "skyshaker/header.html" %}
+{% include "skyshaker/header2.html" %}
 {% block content %}
 {% endblock %}
 {% include "skyshaker/footer.html" %}

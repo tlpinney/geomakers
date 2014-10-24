@@ -7,6 +7,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.core import serializers
+import json
 
 def index(request):
     return render(request, 'skyshaker/index.html')
@@ -25,7 +27,8 @@ def profile(request, slug):
 
 def search(request):
     projects = Project.objects.all()
-    return render(request, 'skyshaker/search.html', {'projects': projects})
+    json = serializers.serialize('json', projects)
+    return render(request, 'skyshaker/search.html', {'projects': projects, 'json': json})
 
 def geodream(request):
     if request.method == 'POST':

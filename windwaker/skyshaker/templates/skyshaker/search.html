@@ -8,8 +8,18 @@
         <input type="checkbox" id="show-GeoRecipes" name="show" checked><label for="show-GeoRecipes">GeoRecipes</label>
         <input type="checkbox" id="show-GeoBoosts" name="show" checked><label for="show-GeoBoosts">GeoBoosts</label>
     </div>
-    <div id="search-sort_by">Sort by: </div>
-    <div id="search-view_as">View as: </div>
+    <div id="search-sort_by">
+        <span>Sort by: </span>
+        <input type="radio" id="sort-NewestToOldest" name="sort" checked><label for="sort-YoungestToOldest">Newest to Oldest</label>
+        <input type="radio" id="sort-OldestToNewest" name="sort" checked><label for="sort-OldestToNewest">Oldest to Newest</label>
+    </div>
+    <!--
+    <div id="search-view_as">
+        <span>View as: </span>
+        <input type="radio" id="view-bigboxes" name="view" checked><label for="view-bigboxes" checked>Big Boxes</label>
+        <input type="radio" id="view-table" name="view" checked><label for="view-table">Table</label>
+    </div>
+    -->
     <div id="search-projects">
         {% for project in projects %}           
         <div class="search-project search-project-{{project.typeOfProject}}">
@@ -19,6 +29,7 @@
                 <div class="search-project-text">
                     <span class="search-project-title">{{ project.title }}</span>
                     <span class="search-project-datetime">{{ project.updated_at|timesince }} ago</span>
+<!--                    <span class="search-project-datetime">{{ project.updated_at|date:"Y-m-d" }} ago</span>-->
                     </br>
                     <span class="search-project-author">{{ project.owner.first_name }} {{ project.owner.last_name }}</span>
                 </div>
@@ -29,6 +40,10 @@
 </div>
 <script>
 
+
+
+var projectsAsJSON = {% autoescape off %} {{ json }} {% endautoescape %}
+
 var projects = document.getElementsByClassName("search-project");
 console.log(projects);
 var geodreams = document.getElementsByClassName("search-project-GeoDream");
@@ -37,6 +52,11 @@ var geoboost = document.getElementsByClassName("search-project-GeoBoost");
 var showGeoDreams = document.getElementById("show-GeoDreams");
 var showGeoRecipes = document.getElementById("show-GeoRecipes");
 var showGeoBoosts = document.getElementById("show-GeoBoosts");
+var sortNewestToOldest = document.getElementById("sort-NewestToOldest");
+var sortOldestToNewest = document.getElementById("sort-OldestToNewest");
+
+var viewBigBoxes = document.getElementById("view-BigBoxes");
+var viewTable = document.getElementById("view-Table");
 
 function showProjects(){
     console.log("starting showProjects");
@@ -50,9 +70,89 @@ function showProjects(){
     console.log("finishing showProjects");
 }
 
+var getDateElement = function (inputString, inputSearch){
+    return inputString.substring(inputString.substring(0,inputString.indexOf(inputSearch)-1).lastIndexOf(" ")+1,inputString.indexOf(inputSearch)-1);
+}
+
+var sort_by_date_oldest_to_newest = function (one,two){
+    console.log("starting sort_by_date with");
+    modifier = 1;
+    alert(one);
+    a = one.childNodes[3].childNodes[3].childNodes[3].textContent;
+    b = two.childNodes[3].childNodes[3].childNodes[3].textContent;
+    aYear = getDateElement(a, "year");
+    bYear = getDateElement(b, "year");
+    aMonth = getDateElement(a, "month");
+    bMonth = getDateElement(b, "month");
+    aDay = getDateElement(a, "day");
+    bDay = getDateElement(b, "day");
+
+    if (aYear < bYear){ return 1*modifier; }
+    else if (aYear > bYear){ return -1*modifier; }
+    else if (aMonth < bMonth){ return 1*modifier; }
+    else if (aMonth > bMonth){ return -1*modifier; }
+    else if (aDay < bDay){ return 1*modifier; }
+    else if (aDay > bDay){ return -1*modifier; }
+    else { return 0*modifier;}
+}
+
+var sort_by_date_newest_to_oldest = function (one,two){
+    console.log("starting sort_by_date with");
+    modifier = -1;
+    alert(one);
+    a = one.childNodes[3].childNodes[3].childNodes[3].textContent;
+    b = two.childNodes[3].childNodes[3].childNodes[3].textContent;
+    aYear = getDateElement(a, "year");
+    bYear = getDateElement(b, "year");
+    aMonth = getDateElement(a, "month");
+    bMonth = getDateElement(b, "month");
+    aDay = getDateElement(a, "day");
+    bDay = getDateElement(b, "day");
+
+    if (aYear < bYear){ return 1*modifier; }
+    else if (aYear > bYear){ return -1*modifier; }
+    else if (aMonth < bMonth){ return 1*modifier; }
+    else if (aMonth > bMonth){ return -1*modifier; }
+    else if (aDay < bDay){ return 1*modifier; }
+    else if (aDay > bDay){ return -1*modifier; }
+    else { return 0*modifier;}
+}
+
+var sortProjects = function (sortfunction){
+    alert("starting sortProjects");
+    console.log(projects);
+
+    ul = document.getElementById("search-projects")
+    var new_ul = ul.cloneNode(false);
+    
+    // Add all projects to an array
+    var lis = [];
+    for(var i = ul.childNodes.length; i--;){
+        if(ul.childNodes[i].nodeName === 'DIV')
+            lis.push(ul.childNodes[i]);
+    }
+
+    // Sort the lis in descending order
+    lis.sort(sortfunction);
+
+    for(var i = 0; i < lis.length; i++)
+        new_ul.appendChild(lis[i]);
+    ul.parentNode.replaceChild(new_ul, ul);
+    console.log("finishing sortProjects");
+}
+
+function driveSort(){
+    //choose how to sort
+    if (sortNewestToOldest.checked) {sortProjects(sort_by_date_newest_to_oldest);}
+    else if (sortOldestToNewest.checked) {sortProjects(sort_by_date_oldest_to_newest);}
+}
+
 showGeoDreams.addEventListener("change", showProjects);
 showGeoRecipes.addEventListener("change", showProjects);
 showGeoBoosts.addEventListener("change", showProjects);
+
+sortNewestToOldest.addEventListener("change", driveSort);
+sortOldestToNewest.addEventListener("change", driveSort);
 
 </script>
 {% endblock %}
