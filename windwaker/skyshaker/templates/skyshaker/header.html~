@@ -3,7 +3,31 @@
 <tbody>
 <tr>
 <td id="header-title"><a href={% url 'index' %}>GEOMAKERS</a></td>
-<td id="header-search">SEARCH</td>
+<td id="header-search">
+<input type="text" id="header-search-textbox" placeholder="Quick Search">
+<button type="submit" id="header-search-button">Go</button>
+<script>
+document.getElementById("header-search-button").addEventListener("click", startQuickSearch);
+
+var headerSearchTextbox = document.getElementById("header-search-textbox");
+
+headerSearchTextbox.onkeypress = checkKeyPress;
+
+function checkKeyPress(e){
+    console.log("starting checkKeyPress with keyCode:");
+    console.log(e.keyCode);
+    if (e.keyCode == 13){startQuickSearch();}
+    console.log("finishing checkKeyPress");
+}
+
+function startQuickSearch(){
+    console.log("starting startQuickSearch");
+    window.location = "{% url 'search' %}" + window.encodeURIComponent(headerSearchTextbox.value);
+    console.log("finishing startQuickSearch");
+}
+
+</script>
+</td>
 <td id="header-donate"><a style="text-decoration: none; color: rgb(245, 91, 41);" href={% url 'donate' %}>Donate</a></td>
 </tr>
 </tbody>

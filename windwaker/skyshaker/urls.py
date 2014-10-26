@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     url(r'^login/$', views.user_login, name='login'),
     url(r'^logout/$', views.user_logout, name='logout'),
     url(r'^profiles/$', views.profile, name='profile'),
-    url(r'^search/$', views.search, name='search'),
+    url(r'^search/', views.search, name='search'),
     url(r'^geodream/$', views.geodream, name='geodream'),
 )
 

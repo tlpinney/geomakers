@@ -200,6 +200,15 @@ showGeoBoosts.addEventListener("change", showProjects);
 sortNewestToOldest.addEventListener("change", driveSort);
 sortOldestToNewest.addEventListener("change", driveSort);
 sortRating.addEventListener("change", driveSort);
-
+</script>
+<script>
+//check parameter and initialize search
+window_location_href = window.location.href
+searchBox.value = window.decodeURIComponent(window_location_href.substring(window_location_href.indexOf("search/")).substring(7));
+searchWords();
+</script>
+<script>
+//hide quick search box on top
+document.getElementById("header-search").style.display = "none";
 </script>
 {% endblock %}
