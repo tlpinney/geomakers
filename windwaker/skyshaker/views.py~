@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render, render_to_response
 from django.template import RequestContext
-from skyshaker.models import Project, Tag, UserProfile
-from skyshaker.forms import UserForm, UserProfileForm
+from skyshaker.models import Image, Link, Project, Tag, Video, UserProfile
+from skyshaker.forms import UserForm, UserProfileForm, ContributeForm, ImageForm
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
@@ -27,26 +27,48 @@ def profile(request, slug):
 
 def search(request):
     projects = Project.objects.all()
-    print "projects is", projects
-    print json.dumps(projects)
     json = serializers.serialize('json', projects)
     return render(request, 'skyshaker/search.html', {'projects': projects, 'json': json})
 
-def geodream(request):
+def contribute(request):
+    print 'starting view: contribute'
+    context = RequestContext(request)
+
     if request.method == 'POST':
-        form = GeoDreamForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        print "request.method == 'POST'"
+        dataDict = dict(request.POST.iterlists())
+        print "dataDict is", dataDict
+        typeOfProject = str(unicode(dataDict[unicode('typeOfProject')][0]))
+        title = str(unicode(dataDict[unicode('title')][0]))
+        abstract = str(unicode(dataDict[unicode('abstract')][0]))
+        videos = [video.strip() for video in str(unicode(dataDict[unicode('videos')][0])).split(",")]
+        print "videos are", videos
+        for url in videos:
+            if 'youtube' in url:
+                idOfYoutubeVideo = re.search('(?<=v=)\w+', url).group(0)
+                videoData = yt_service.GetYouTubeVideoEntry(video_id=idOfYoutubeVideo)
+#                title = videoData...
+            elif 'vimeo' in instance.url:
+                idOfVimeoVideo = re.search('(?<=com/)\w+', url).group(0)
+#                title = some vimeo API
+        Video.objects.create(title=title, url=url, embed="")
 
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        form = GeoDreamForm()
+        links = [link.strip() for link in str(unicode(dataDict[unicode('links')][0])).split(",")]
+        for url in links:
+            Video.objects.create(title="", url=url)
 
-    return render(request, 'skyshaker/geodream.html', {'form': form})
+#        Project.objects.create(title=title, abstract=abstract, rating=3)
+
+        print "created objects"
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+    elif request.method =='GET':
+        print "request.method == 'GET'"
+        contribute_form = ContributeForm()
+        image_form = ImageForm()
+
+    print 'finishing view: contribute'
+    return render(request, 'skyshaker/contribute.html', {'contribute_form': contribute_form, 'image_form': image_form})
 
 def register(request):
     # Like before, get the request's context.

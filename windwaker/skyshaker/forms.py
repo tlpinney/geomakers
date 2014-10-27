@@ -1,4 +1,4 @@
-from skyshaker.models import Project, UserProfile
+from skyshaker.models import Image, Project, UserProfile
 from django.contrib.auth.models import User
 from django import forms
 
@@ -14,7 +14,13 @@ class UserProfileForm(forms.ModelForm):
         model = UserProfile
         fields = ('description', 'location', 'facebook', 'twitter', 'linkedin', 'picture')
 
-#class GeoDreamForm(forms.ModelForm):
-#    class Meta:
-#        model = Project
-#        fields = ('abstract', 'location')
+class ContributeForm(forms.ModelForm):
+    class Meta:
+        model = Project
+#        fields = ('typeOfProject', 'title', 'abstract', 'location', 'images', 'videos', 'links', 'related')
+        fields = ('typeOfProject', 'title', 'abstract', 'location')
+
+class ImageForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields =('image', 'caption')

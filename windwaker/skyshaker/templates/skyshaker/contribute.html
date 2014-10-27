@@ -1,0 +1,74 @@
+{% extends "skyshaker/base.html" %}
+{% block content %}
+<div id="geodream-middle">
+<div class="submit-header">Share Your Project</div>
+<div class="submit-panel">
+
+<form id="user_form" method="post" action="/skyshaker/contribute/" enctype="multipart/form-data">
+{% csrf_token %}
+    <div class="submit-panel-left">
+        <div class="submit-part">
+            <label for="id_typeOfProject">Type of Project:</label>
+            <select id="id_typeOfProject" name="typeOfProject">
+                <option value="" selected="selected">---------</option>
+                <option value="GeoDream">GeoDream</option>
+                <option value="GeoRecipe">GeoRecipe</option>
+                <option value="GeoBoost">GeoBoost</option>
+            </select>
+        </div>        
+        <div class="submit-part">
+            <label for="id_title">Name your GeoDream:</label>
+            <input id="id_title" maxlength="60" name="title" type="text">
+        </div>
+        <div class="submit-part">
+            <label for="id_abstract">Tell us about your GeoDream:</label> <textarea id="id_abstract" name="abstract" rows="5"></textarea>
+        </div>
+        <div class="submit-part">
+            <label for="id_location">GeoDream Location:</label>
+            <input id="id_location" maxlength="200" name="location" type="text">
+        </div>
+        <div class="submit-part">GeoDream Image:
+            <input id="id_image" type="file" name="image">
+            <img id="submit-image-img" src="#" alt="image"/>
+            </div>
+        </div>
+        <div class="submit-part">
+            <label for="id_videos">Videos:</label>
+            <textarea id="id_videos" name="videos" rows="5" multiple></textarea>
+        </div>
+        <div class="submit-part">
+            <label for="id_links">Links:</label>
+            <textarea id="id_links" name="links" rows="5" multiple></textarea>
+        </div>
+        <div class="submit-part">
+        <label for="id_related">Related:</label><select multiple="multiple" id="id_related" name="related">
+            <option value="2">Mapping with Balloons</option>
+            <option value="5">Title</option>
+            <option value="6">Titulo</option>
+        </select>
+        </div>
+    </div>
+    <input type="submit" name="submit" value="Submit" />
+</form>
+</div>
+</div>
+<script>
+function readURL(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#submit-image-img').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#id_image").change(function(){
+    readURL(this);
+});
+</script>
+{{image_form}}
+{% endblock %}

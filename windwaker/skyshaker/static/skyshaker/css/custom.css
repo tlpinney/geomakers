@@ -110,6 +110,7 @@ footer table td div img{height: 25px;}
 .submit-part label{vertical-align:top; display: block;}
 .submit-panel-left{max-width: 700px;}
 .submit-panel input, .submit-panel textarea{width: 100%;}
+#submit-image-img{width: 100px; height: 100px; border: 1px solid #8F0AD7; border-radius: 10px;}
 
 
 h1{color: rgb(241,75,35); font-size: 25px; text-align: left;}

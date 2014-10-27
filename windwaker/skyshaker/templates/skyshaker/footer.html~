@@ -28,11 +28,11 @@
     <td><div>
         <div><a><b>Connect</b></a></div>
         <div><img src="{% static 'skyshaker/img/social/facebook.png'%}"></img><a>Facebook</a></div>
-        <div><img></img><a>Twitter</a></div>
-         <div><img></img><a>Instagram</a></div>
-        <div><img></img><a>LinkedIn</a></div>
-        <div><img></img><a>YouTube</a></div>
-        <div><img></img><a>Vine</a></div>
+        <div><img src="{% static 'skyshaker/img/social/twitter.png'%}"></img><a>Twitter</a></div>
+         <div><img src="{% static 'skyshaker/img/social/instagram.png'%}"></img><a>Instagram</a></div>
+        <div><img src="{% static 'skyshaker/img/social/linkedin.png'%}"></img><a>LinkedIn</a></div>
+        <div><img src="{% static 'skyshaker/img/social/youtube.png'%}"></img><a>YouTube</a></div>
+        <div><img src="{% static 'skyshaker/img/social/vine.png'%}"></img><a>Vine</a></div>
     </div></td>
 </tr>
 </tbody>

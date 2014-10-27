@@ -10,8 +10,9 @@ urlpatterns = patterns('',
     url(r'^donate/', views.donate, name='donate'),
     url(r'projects/(?P<slug>[^\.]+)', views.project, name='project'),
     url(r'^profiles/(?P<slug>[^\.]+)', views.profile, name='profile'),
-    url(r'^search/(?P<searchWords>[^\.]+)', views.search, name='search'),
-    url(r'^geodream/$', views.geodream, name='geodream'),
+    url(r'^search/', views.search, name='search'),
+    url(r'^contribute/$', views.contribute, name='contribute'),
+#    url(r'^geodream/$', views.geodream, name='geodream'),
 )
 
 if settings.DEBUG:
