@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
 from django.conf import settings
+from django.template.defaultfilters import slugify
 import os, re
 
 
@@ -51,11 +52,11 @@ class MakerSpace(models.Model):
     url = models.URLField(default="", null=True, blank=True)
 
 class Project(models.Model):
-    owner = models.OneToOneField(User, null=True, blank=True)
+    owner = models.ForeignKey(User, null=True, blank=True)
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, null=True, blank=True)
-    abstract = models.TextField()
-    location = models.CharField(max_length=200)
+    abstract = models.TextField(null=True, blank=True)
+    location = models.CharField(max_length=200, null=True, blank=True)
     links = models.ManyToManyField('Link', blank=True)
     videos = models.ManyToManyField('Video', blank=True)
     images = models.ManyToManyField('Image', blank=True)
@@ -66,7 +67,10 @@ class Project(models.Model):
     updated_at = models.DateTimeField(auto_now=True, null=True, blank=True, editable=True)
     related = models.ManyToManyField('self', blank=True)
     def __str__(self):
-        return self.title
+        if self.owner is None:
+            return self.title
+        elif self.owner.username != "":
+            return self.title + " by " + self.owner.username
 
 def updateVideoEmbed(sender, instance, **kwargs):
     instance_url = str(instance.url)
@@ -80,17 +84,23 @@ def updateVideoEmbed(sender, instance, **kwargs):
     instance.save()
     post_save.connect(updateVideoEmbed, sender=Video)
 
-def updateRatingAsString(sender, instance, **kwargs):
+def updateProject(sender, instance, **kwargs):
+    # add slug if doesn't exist    
+    if instance.slug == "":
+        instance.slug = slugify(instance.title)
+
+    # update rating
     ratingAsString = ""
     for i in range(0,instance.rating):
         ratingAsString += "<span class='star starFilled'>&#9733;</span>"
     for i in range(0,5-instance.rating):
         ratingAsString += "<span class='star starUnfilled'>&#9734;</span>"
     instance.ratingAsString = ratingAsString
-    post_save.disconnect(updateRatingAsString, sender=Project)
+
+    post_save.disconnect(updateProject, sender=Project)
     instance.save()
-    post_save.connect(updateRatingAsString, sender=Project)
+    post_save.connect(updateProject, sender=Project)
 
 # register the signal
 post_save.connect(updateVideoEmbed, sender=Video)
-post_save.connect(updateRatingAsString, sender=Project) 
+post_save.connect(updateProject, sender=Project) 

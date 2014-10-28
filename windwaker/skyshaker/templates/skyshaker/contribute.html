@@ -42,9 +42,9 @@
         </div>
         <div class="submit-part">
         <label for="id_related">Related:</label><select multiple="multiple" id="id_related" name="related">
-            <option value="2">Mapping with Balloons</option>
-            <option value="5">Title</option>
-            <option value="6">Titulo</option>
+            {% for project in projects %}
+                <option value="{{project.id}}">{{project.title}}</option>
+            {% endfor %}
         </select>
         </div>
     </div>
@@ -70,5 +70,4 @@ $("#id_image").change(function(){
     readURL(this);
 });
 </script>
-{{image_form}}
 {% endblock %}

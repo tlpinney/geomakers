@@ -8,7 +8,8 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core import serializers
-import json
+import json, re, requests
+from bs4 import BeautifulSoup
 
 def index(request):
     return render(request, 'skyshaker/index.html')
@@ -39,36 +40,59 @@ def contribute(request):
         dataDict = dict(request.POST.iterlists())
         print "dataDict is", dataDict
         typeOfProject = str(unicode(dataDict[unicode('typeOfProject')][0]))
-        title = str(unicode(dataDict[unicode('title')][0]))
         abstract = str(unicode(dataDict[unicode('abstract')][0]))
-        videos = [video.strip() for video in str(unicode(dataDict[unicode('videos')][0])).split(",")]
+        titleOfProject = str(unicode(dataDict[unicode('title')][0]))
+        location = str(unicode(dataDict[unicode('location')][0]))
+        project = Project.objects.create(owner_id=request.user.id, title=titleOfProject, abstract=abstract, location=location, rating=3, typeOfProject=typeOfProject)
+
+
+        # add videos
+        videos = []
+        for video in str(unicode(dataDict[unicode('videos')][0])).split(","):
+            videoStripped = video.strip()
+            if videoStripped != "":
+                videos.append(videoStripped)
         print "videos are", videos
+        print "len(videos) is ", len(videos)
         for url in videos:
+            titleOfVideo = ""
             if 'youtube' in url:
                 idOfYoutubeVideo = re.search('(?<=v=)\w+', url).group(0)
-                videoData = yt_service.GetYouTubeVideoEntry(video_id=idOfYoutubeVideo)
-#                title = videoData...
-            elif 'vimeo' in instance.url:
+                #videoData = yt_service.GetYouTubeVideoEntry(video_id=idOfYoutubeVideo)
+                titleOfVideo = ""
+            elif 'vimeo' in url:
                 idOfVimeoVideo = re.search('(?<=com/)\w+', url).group(0)
-#                title = some vimeo API
-        Video.objects.create(title=title, url=url, embed="")
+                titleOfVideo = ""
+            project.videos.create(title=titleOfVideo, url=url, embed="")
 
-        links = [link.strip() for link in str(unicode(dataDict[unicode('links')][0])).split(",")]
+        # add links
+        links = []
+        for link in str(unicode(dataDict[unicode('links')][0])).split(","):
+            linkStripped = link.strip()
+            if linkStripped != "":
+                links.append(linkStripped)
+        print "links is ", links
+        print "len(links) is ", len(links)
         for url in links:
-            Video.objects.create(title="", url=url)
+            print "url is ", url
+            titleOfLink = BeautifulSoup(requests.get(url).content).title.string
+            project.links.create(title=titleOfLink, url=url)
 
-#        Project.objects.create(title=title, abstract=abstract, rating=3)
+        # add pictures
+        if 'image' in request.FILES:
+            project.images.create(image=request.FILES['image'], caption=request.FILES['image'].name[:-4])
 
         print "created objects"
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
     elif request.method =='GET':
         print "request.method == 'GET'"
+        projects = Project.objects.all()
         contribute_form = ContributeForm()
         image_form = ImageForm()
 
     print 'finishing view: contribute'
-    return render(request, 'skyshaker/contribute.html', {'contribute_form': contribute_form, 'image_form': image_form})
+    return render(request, 'skyshaker/contribute.html', {'projects': projects, 'contribute_form': contribute_form, 'image_form': image_form})
 
 def register(request):
     # Like before, get the request's context.
