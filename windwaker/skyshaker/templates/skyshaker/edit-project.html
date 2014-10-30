@@ -1,0 +1,98 @@
+{% extends "skyshaker/base.html" %}
+{% block content %}
+<div id="geodream-middle">
+<div class="editproj-header">Edit Your Project</div>
+<div class="editproj-panel">
+
+<form id="user_form" method="post" action="/skyshaker/projects/{{project.slug}}/edit" enctype="multipart/form-data">
+{% csrf_token %}
+    <div class="editproj-panel-left">
+        <div class="editproj-part">
+            <label for="id_owner">Owner:</label>
+            <select id="id_owner" name="owner">
+                <option value="" selected="selected">---------</option>
+                <option value="{{project.owner.id}}">{{project.owner}}</option>
+                {% for user in project.users %}
+                <option value="{{user.id}}">{{user}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="editproj-part">
+            <label for="id_typeOfProject">Type of Project:</label>
+            <select id="id_typeOfProject" name="typeOfProject">
+                
+                <option value="" {% if project.typeOfProject == "" %}selected="selected"{% endif %}>---------</option>
+                <option value="GeoDream" {% if project.typeOfProject == "GeoDream" %}selected="selected"{% endif %}>GeoDream</option>
+                <option value="GeoRecipe" {% if project.typeOfProject == "GeoRecipe" %}selected="selected"{% endif %}>GeoRecipe</option>
+                <option value="GeoBoost" {% if project.typeOfProject == "GeoBoost" %}selected="selected"{% endif %}>GeoBoost</option>
+            </select>
+        </div>        
+        <div class="editproj-part">
+            <label for="id_title">Name your GeoDream:</label>
+            <input id="id_title" maxlength="60" name="title" type="text" value="{{project.title}}>
+        </div>
+        <div class="editproj-part">
+            <label for="id_slug">Nickname for URL</label>
+            <input id="id_slug" maxlength="60" name="slug" type="text" value="{{project.slug}}">
+        </div>
+        <div class="editproj-part">
+            <label for="id_abstract">Abstract/Description:</label> <textarea id="id_abstract" name="abstract">{{project.abstract}}</textarea>
+        </div>
+        <div class="editproj-part">
+            <label for="id_location">GeoDream Location:</label>
+            <input id="id_location" maxlength="200" name="location" type="text" value="{{project.location}}">
+        </div>
+        <!--
+        <div class="editproj-part">GeoDream Image:
+            <input id="id_image" type="file" name="image">
+            <img id="editproj-image-img" src="#" alt="image"/>
+            </div>
+        </div>
+        -->
+        <div class="submit-part">
+            <label for="id_videos">Videos:</label>
+            {% for video in project.videos.all %}
+            <input id="id_video_title"></input>
+            <input id="id_video_url"></input>
+            {% endfor %}
+        </div>
+        <div class="submit-part">
+            <label for="id_links">Links:</label>
+            {% for link in project.links.all %}
+            <input id="id_link_title"></input>
+            <input id="id_link_url"></input>
+            {% endfor %}
+        </div>
+        <div class="submit-part">
+        <label for="id_related">Related:</label><select multiple="multiple" id="id_related">
+            {% for related_project in project.related.all %}
+                <option value="{{related_project.id}}">{{related_project.title}}</option>
+            {% endfor %}
+        </select>
+        </div>
+    </div>
+    <input type="submit" name="submit" value="Submit" />
+</form>
+</div>
+</div>
+<script>
+// import image into file
+
+function readURL(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#submit-image-img').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#id_image").change(function(){
+    readURL(this);
+});
+</script>
+{% endblock %}
