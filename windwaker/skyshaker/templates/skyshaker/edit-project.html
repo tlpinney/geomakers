@@ -10,10 +10,11 @@
         <div class="editproj-part">
             <label for="id_owner">Owner:</label>
             <select id="id_owner" name="owner">
-                <option value="" selected="selected">---------</option>
-                <option value="{{project.owner.id}}">{{project.owner}}</option>
-                {% for user in project.users %}
+                <option value="{{project.owner.id}}"  selected="selected">{{project.owner}}</option>
+                {% for user in users %}
+                {% if user != project.owner %}
                 <option value="{{user.id}}">{{user}}</option>
+                {% endif %}
                 {% endfor %}
             </select>
         </div>
@@ -29,10 +30,10 @@
         </div>        
         <div class="editproj-part">
             <label for="id_title">Name your GeoDream:</label>
-            <input id="id_title" maxlength="60" name="title" type="text" value="{{project.title}}>
+            <input id="id_title" maxlength="60" name="title" type="text" value="{{project.title}}">
         </div>
         <div class="editproj-part">
-            <label for="id_slug">Nickname for URL</label>
+            <label for="id_slug">Nickname for URL | http://geomakers.org/projects/</label>
             <input id="id_slug" maxlength="60" name="slug" type="text" value="{{project.slug}}">
         </div>
         <div class="editproj-part">
@@ -42,31 +43,61 @@
             <label for="id_location">GeoDream Location:</label>
             <input id="id_location" maxlength="200" name="location" type="text" value="{{project.location}}">
         </div>
-        <!--
-        <div class="editproj-part">GeoDream Image:
-            <input id="id_image" type="file" name="image">
-            <img id="editproj-image-img" src="#" alt="image"/>
+        <div class="editproj-part">
+            Images:
+            <div id="containerOfImages">
+                {% for image in project.images.all %}
+                <div class="imageBlock">
+                    <div class="imageInputWrapper">
+                        <input type="file" name="imageInput" id="imageInput_{{forloop.counter0}}">
+                    </div>
+                    <div class="imageImgWrapper">
+                        <img src="{{image.image.url}}" alt="image" id="imageImg_{{forloop.counter0}}"/>
+                    </div>
+                    <div class="imageCaptionWrapper">
+                        <input type="text" name="id_image_caption"  value="{{image.caption}}">
+                    </div>
+                </div>
+                {% endfor %}
             </div>
+            <button type="button" id="clickToAddImage">Click here to add an Image</button>
         </div>
-        -->
-        <div class="submit-part">
+        <div class="editproj-part">
             <label for="id_videos">Videos:</label>
+            <table id="tableOfVideos">
+            <thead><tr><th>Title</th><th>URL/Website Address</th></tr></thead>
+            <tbody>
             {% for video in project.videos.all %}
-            <input id="id_video_title"></input>
-            <input id="id_video_url"></input>
+            <tr>
+            <td><input type="text" name="id_video_title"  value="{{video.title}}"></td>
+            <td><input type="text" name="id_video_url" value="{{video.url}}"></td>
             {% endfor %}
+            </tbody></table>
+            <button type="button" id="clickToAddVideo">Click here to add a Video</button>
         </div>
-        <div class="submit-part">
+        <div class="editproj-part">
             <label for="id_links">Links:</label>
+            <table id="tableOfLinks">
+            <thead><tr><th>Title</th><th>URL/Website Address</th></tr></thead>
+            <tbody>
             {% for link in project.links.all %}
-            <input id="id_link_title"></input>
-            <input id="id_link_url"></input>
+            <tr>
+            <td><input type="text" name="id_link_title" value="{{link.title}}"></td>
+            <td><input type="text" name="id_link_url" value="{{link.url}}"></td>
+            </tr>
             {% endfor %}
+            </tbody></table>
+            <button type="button" id="clickToAddLink">Click here to add a Link</button>
         </div>
         <div class="submit-part">
         <label for="id_related">Related:</label><select multiple="multiple" id="id_related">
-            {% for related_project in project.related.all %}
-                <option value="{{related_project.id}}">{{related_project.title}}</option>
+            {% for related in project.related.all %}
+                <option value="{{related.id}}" selected>{{related.title}}</option>
+            {% endfor %}
+            {% for proj in projects %}
+                {% if proj not in project.related.all %}
+                <option value="{{proj.id}}">{{proj.title}}</option>
+                {% endif %}
             {% endfor %}
         </select>
         </div>
@@ -76,23 +107,98 @@
 </div>
 </div>
 <script>
-// import image into file
+// add link on button click
+function addLink(){
+    console.log("starting addLink");
+    var tableOfLinks = document.getElementById("tableOfLinks");
+    var row = tableOfLinks.insertRow(-1);
 
+    var cellTitle = row.insertCell(0);
+    var inputTitle = document.createElement("input");
+    inputTitle.setAttribute("type", "text");
+    inputTitle.setAttribute("name", "id_link_title");
+    cellTitle.appendChild(inputTitle);
+
+    var cellUrl = row.insertCell(1);
+    var inputUrl = document.createElement("input");
+    inputUrl.setAttribute("type", "text");
+    inputUrl.setAttribute("name", "id_link_url");
+    cellUrl.appendChild(inputUrl);
+    console.log("finishing addLink");
+}
+
+document.getElementById("clickToAddLink").addEventListener("click", addLink);
+</script>
+<script>
+// add video on button click
+function addVideo(){
+    console.log("starting addVideo");
+    var tableOfVideos = document.getElementById("tableOfVideos");
+    var row = tableOfVideos.insertRow(-1);
+
+    var cellTitle = row.insertCell(0);
+    var inputTitle = document.createElement("input");
+    inputTitle.setAttribute("type", "text");
+    inputTitle.setAttribute("name", "id_video_title");
+    cellTitle.appendChild(inputTitle);
+
+    var cellUrl = row.insertCell(1);
+    var inputUrl = document.createElement("input");
+    inputUrl.setAttribute("type", "text");
+    inputUrl.setAttribute("name", "id_video_url");
+    cellUrl.appendChild(inputUrl);
+    console.log("finishing addVideo");
+}
+
+document.getElementById("clickToAddVideo").addEventListener("click", addVideo);
+</script>
+<script>
+// add image if button clicked
+function addImage(){
+    console.log("starting addImage");
+    containerOfImages = document.getElementById("containerOfImages");
+    imageBlocks = document.getElementsByClassName("imageBlock");
+    numberOfImageBlocks = imageBlocks.length;
+    index = numberOfImageBlocks;
+    imageBlock = document.createElement("div");
+    imageBlock.setAttribute("class", "imageBlock");
+    imageBlock.innerHTML = '<div class="imageInputWrapper"><input type="file" name="imageInput" id="imageInput_' + index + '"></div><div class="imageImgWrapper"><img class="editproj-image-img" src="{{image.image.url}}" alt="image" id="imageImg_' + index + '"></div><div class="imageCaptionWrapper"><input type="text" name="id_image_caption" value="{{image.caption}}"></div>'
+    containerOfImages.appendChild(imageBlock);
+    console.log("finishing addImage");
+}
+
+document.getElementById("clickToAddImage").addEventListener("click", addImage);
+</script>
+<script>
+arrayOfImageBlocks = document.getElementsByClassName("imageBlock");
+arrayOfImageInputs = document.getElementsByName("imageInput");
+
+//display preview image
 function readURL(input) {
-
+    console.log("starting readURL");
+    indexNumber = input.id.substring(11);
+    console.log("index number is " + indexNumber);
+    
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            $('#submit-image-img').attr('src', e.target.result);
+            document.getElementById("imageImg_"+indexNumber).src = e.target.result;
         }
 
         reader.readAsDataURL(input.files[0]);
     }
+    
+    console.log("finishing readURL");
 }
 
-$("#id_image").change(function(){
-    readURL(this);
-});
+
+
+for (var i = 0; i < arrayOfImageInputs.length; i++)
+{
+    arrayOfImageInputs[i].addEventListener("change", function(){
+        readURL(this);
+    });
+}
 </script>
 {% endblock %}

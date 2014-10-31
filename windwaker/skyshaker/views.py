@@ -156,9 +156,10 @@ def projectEdit(request, slug):
         project = get_object_or_404(Project, slug=slug)
         print "project is ", project
         projects = Project.objects.all()
+        users = User.objects.all()
 
     print 'finishing view: projectEdit'
-    return render(request, 'skyshaker/edit-project.html', {'project': project, 'projects': projects})
+    return render(request, 'skyshaker/edit-project.html', {'project': project, 'projects': projects, 'users': users})
 
 def register(request):
     # Like before, get the request's context.
