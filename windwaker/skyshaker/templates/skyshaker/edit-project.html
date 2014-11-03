@@ -49,13 +49,13 @@
                 {% for image in project.images.all %}
                 <div class="imageBlock">
                     <div class="imageInputWrapper">
-                        <input type="file" name="imageInput" id="imageInput_{{forloop.counter0}}">
+                        <input type="file" name="imageInput_{{forloop.counter0}}" class="imageInput" id="imageInput_{{forloop.counter0}}">
                     </div>
                     <div class="imageImgWrapper">
                         <img src="{{image.image.url}}" alt="image" id="imageImg_{{forloop.counter0}}"/>
                     </div>
                     <div class="imageCaptionWrapper">
-                        <input type="text" name="id_image_caption"  value="{{image.caption}}">
+                        <input type="text" name="image_caption"  value="{{image.caption}}">
                     </div>
                 </div>
                 {% endfor %}
@@ -69,8 +69,8 @@
             <tbody>
             {% for video in project.videos.all %}
             <tr>
-            <td><input type="text" name="id_video_title"  value="{{video.title}}"></td>
-            <td><input type="text" name="id_video_url" value="{{video.url}}"></td>
+            <td><input type="text" name="video_title"  value="{{video.title}}"></td>
+            <td><input type="text" name="video_url" value="{{video.url}}"></td>
             {% endfor %}
             </tbody></table>
             <button type="button" id="clickToAddVideo">Click here to add a Video</button>
@@ -82,8 +82,8 @@
             <tbody>
             {% for link in project.links.all %}
             <tr>
-            <td><input type="text" name="id_link_title" value="{{link.title}}"></td>
-            <td><input type="text" name="id_link_url" value="{{link.url}}"></td>
+            <td><input type="text" name="link_title" value="{{link.title}}"></td>
+            <td><input type="text" name="link_url" value="{{link.url}}"></td>
             </tr>
             {% endfor %}
             </tbody></table>
@@ -116,13 +116,13 @@ function addLink(){
     var cellTitle = row.insertCell(0);
     var inputTitle = document.createElement("input");
     inputTitle.setAttribute("type", "text");
-    inputTitle.setAttribute("name", "id_link_title");
+    inputTitle.setAttribute("name", "link_title");
     cellTitle.appendChild(inputTitle);
 
     var cellUrl = row.insertCell(1);
     var inputUrl = document.createElement("input");
     inputUrl.setAttribute("type", "text");
-    inputUrl.setAttribute("name", "id_link_url");
+    inputUrl.setAttribute("name", "link_url");
     cellUrl.appendChild(inputUrl);
     console.log("finishing addLink");
 }
@@ -139,13 +139,13 @@ function addVideo(){
     var cellTitle = row.insertCell(0);
     var inputTitle = document.createElement("input");
     inputTitle.setAttribute("type", "text");
-    inputTitle.setAttribute("name", "id_video_title");
+    inputTitle.setAttribute("name", "video_title");
     cellTitle.appendChild(inputTitle);
 
     var cellUrl = row.insertCell(1);
     var inputUrl = document.createElement("input");
     inputUrl.setAttribute("type", "text");
-    inputUrl.setAttribute("name", "id_video_url");
+    inputUrl.setAttribute("name", "video_url");
     cellUrl.appendChild(inputUrl);
     console.log("finishing addVideo");
 }
@@ -162,22 +162,27 @@ function addImage(){
     index = numberOfImageBlocks;
     imageBlock = document.createElement("div");
     imageBlock.setAttribute("class", "imageBlock");
-    imageBlock.innerHTML = '<div class="imageInputWrapper"><input type="file" name="imageInput" id="imageInput_' + index + '"></div><div class="imageImgWrapper"><img class="editproj-image-img" src="{{image.image.url}}" alt="image" id="imageImg_' + index + '"></div><div class="imageCaptionWrapper"><input type="text" name="id_image_caption" value="{{image.caption}}"></div>'
+    imageBlock.innerHTML = '<div class="imageInputWrapper"><input type="file" name="imageInput_' + index + '" class="imageInput" id="imageInput_' + index + '"></div><div class="imageImgWrapper"><img class="editproj-image-img" src="{{image.image.url}}" alt="image" id="imageImg_' + index + '"></div><div class="imageCaptionWrapper"><input type="text" name="image_caption" value="{{image.caption}}"></div>'
     containerOfImages.appendChild(imageBlock);
     console.log("finishing addImage");
+
+    // updating arrayOfImageInputs
+    arrayOfImageInputs = document.getElementsByClassName("imageInput");
+    addEventListenersToImageInputs();
 }
 
 document.getElementById("clickToAddImage").addEventListener("click", addImage);
 </script>
 <script>
-arrayOfImageBlocks = document.getElementsByClassName("imageBlock");
-arrayOfImageInputs = document.getElementsByName("imageInput");
+var arrayOfImageBlocks = document.getElementsByClassName("imageBlock");
+var arrayOfImageInputs = document.getElementsByClassName("imageInput");
 
 //display preview image
 function readURL(input) {
     console.log("starting readURL");
     indexNumber = input.id.substring(11);
     console.log("index number is " + indexNumber);
+    console.log("index class is " + input.className);
     
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -192,13 +197,23 @@ function readURL(input) {
     console.log("finishing readURL");
 }
 
-
-
-for (var i = 0; i < arrayOfImageInputs.length; i++)
-{
-    arrayOfImageInputs[i].addEventListener("change", function(){
-        readURL(this);
-    });
+function addEventListenersToImageInputs(){
+    console.log("starting addEventListenersToImageInputs");
+    arrayOfImageInputs = document.getElementsByClassName("imageInput");
+    console.log(arrayOfImageInputs);
+    for (var i = 0; i < arrayOfImageInputs.length; i++)
+    {
+        arrayOfImageInputs[i].addEventListener("change", function(){
+            readURL(this);
+        });
+    }
+    console.log("finishing addEventListenersToImageInputs");
 }
+addEventListenersToImageInputs();
+
+</script>
+<script>
+// script that make sure people add titles and urls for all the videos, unless both blank
+// script that makes sure people specify an owner
 </script>
 {% endblock %}

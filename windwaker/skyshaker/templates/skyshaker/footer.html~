@@ -1,44 +1,38 @@
 {% load staticfiles %}
-<footer>
-<table>
-<tbody>
-<tr>
-    <td><div>
-        <div><a><b>About us</b></a></div>
-        <div><a>Contact</a></div>
-        <div><a>Team</a></div>
-        <div><a>Donate</a></div>
-        <div><a>Resources</a></div>
-        <div><a>What is GeoMakers?</a></div>
-    </div></td>
-    <td><div>
-        <div><a><b>Contributors</b></a></div>
-        <div><a>GeoDreamers</a></div>
-        <div><a>GeoMakers</a></div>
-        <div><a>GeoBoosters</a></div>
-        <div><a>GeoContests</a></div>
-    </div></td>
-    <td><div>
-        <div><a><b>Help</b></a></div>
-        <div><a>Terms of Use</a></div>
-        <div><a>Private Policy</a></div>
-        <div><a>Support</a></div>
-    </div></td>
-    <td></td>
-    <td><div>
-        <div><a><b>Connect</b></a></div>
-        <div><img src="{% static 'skyshaker/img/social/facebook.png'%}"></img><a>Facebook</a></div>
-        <div><img src="{% static 'skyshaker/img/social/twitter.png'%}"></img><a>Twitter</a></div>
-         <div><img src="{% static 'skyshaker/img/social/instagram.png'%}"></img><a>Instagram</a></div>
-        <div><img src="{% static 'skyshaker/img/social/linkedin.png'%}"></img><a>LinkedIn</a></div>
-        <div><img src="{% static 'skyshaker/img/social/youtube.png'%}"></img><a>YouTube</a></div>
-        <div><img src="{% static 'skyshaker/img/social/vine.png'%}"></img><a>Vine</a></div>
-    </div></td>
-</tr>
-</tbody>
-</table>
-<table><tbody><tr>
-    <td>GEOMAKERS</td>
-    <td>&copy; 2014 GeoMakers</td>  
-</tr></tbody></table>
-</footer>
+        <article id="footer" class="container-fluid">
+            <div class="row">
+                <div class="col-sm-offset-1 col-sm-2">
+                    <h4>About</h4>
+                    <h5>Contact</h5>
+                    <h5>Team</h5>
+                    <h5>Donate</h5>
+                    <h5>Resources</h5>
+                    <h5>What is GeoMakers?</h5>
+                </div>
+                <div class="col-sm-2">
+                    <h4>Contributors</h4>
+                    <h5>Geo Dreamers</h5>
+                    <h5>Geo Makers</h5>
+                    <h5>Geo Boosters</h5>
+                    <h5>Geo Contests</h5>
+                </div>
+                <div class="col-sm-2">
+                    <h4>Help</h4>
+                    <h5>Terms of Use</h5>
+                    <h5>Privacy Policy</h5>
+                    <h5>Support</h5>
+                </div>
+                <div class="col-sm-2">
+                    <h4>Connect</h4>
+                    <h5>Facebook</h5>
+                    <h5>Twitter</h5>
+                    <h5>Instagram</h5>
+                    <h5>LinkedIn</h5>
+                    <h5>YouTube</h5>
+                    <h5>Vine</h5>
+                </div>
+                <div class="col-sm-offset-1 col-sm-10" style="border-top:1px solid white">
+                    <h4>GeoMakers copyright 2014</h4>
+                </div>
+            </div>
+        </article>

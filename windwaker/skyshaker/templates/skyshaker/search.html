@@ -18,33 +18,52 @@
         <input type="radio" id="sort-OldestToNewest" name="sort" checked><label for="sort-OldestToNewest">Oldest to Newest</label>
         <input type="radio" id="sort-Rating" name="sort" checked><label for="sort-Rating">Rating</label>
     </div>
-    <!--
-    <div id="search-view_as">
-        <span>View as: </span>
-        <input type="radio" id="view-bigboxes" name="view" checked><label for="view-bigboxes" checked>Big Boxes</label>
-        <input type="radio" id="view-table" name="view" checked><label for="view-table">Table</label>
-    </div>
-    -->
-    <div id="search-projects">
-        {% for project in projects %}           
-        <div class="search-project search-project-{{project.typeOfProject}}">
-            <img src="{{ project.images.all.0.image.url }}" class="search-project-image" alt=""/>
-            <div class="search-project-top">
-                <img src="{{ project.owner.userprofile.picture.url }}" class="search-project-image-owner" alt=""/>
-                <div class="search-project-text">
-                    <span class="search-project-title">{{ project.title }}</span>
-                    <span class="search-project-datetime">{{ project.updated_at|timesince }} ago</span>
-                    </br>
-                    <span class="search-project-author">{{ project.owner.first_name }} {{ project.owner.last_name }}</span>
-                </div>
-            </div>
-            <div class="search-project-bottom">
-                <div class="search-project-rating">{{ project.rating }} Stars</div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
 </div>
+<article id="explore" class="container-fluid">
+    <div class="row">
+        <div id="gallery">
+            {% for project in projects %}
+            <div class="col-sm-3 search-project{% if project.typeOfProject == 'GeoDream' %} search-project-GeoDream{% elif project.typeOfProject == 'GeoRecipe' %} search-project-GeoRecipe{% elif project.typeOfProject == 'GeoBoost' %} search-project-GeoBoost{% endif %}">
+                <ul class="contentcard">
+                    <li class="card">
+                        <ul class="cardContainer">
+                            <li class="photo">
+                                <img src="{{ project.images.all.0.image.url }}" />
+                            </li>
+                            <li class="price">
+                                <div class="row">
+                                    <div class="col-sm-1">
+                                        <img src="{{ project.owner.userprofile.picture.url }}" />
+                                    </div>
+                                    <div class="col-sm-11">
+                                        <p>{{ project.title }}</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <ul class="options">
+                                    <li style="display:none;">{{ project.updated_at|timesince }} ago</li>
+                                    <li><span>{% if project.abstract %}{{project.abstract}}{% endif %}</span></li>
+                                    <li>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                        <span>(124)</span>
+                                    </li>
+                                    <li>556 <span>builds</span></li>
+                                    <li>4,100 <span>shoutouts</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul> <!-- End ul#plans -->
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+<article>
 <script>
 
 
@@ -63,22 +82,21 @@ var showGeoBoosts = document.getElementById("show-GeoBoosts");
 var sortNewestToOldest = document.getElementById("sort-NewestToOldest");
 var sortOldestToNewest = document.getElementById("sort-OldestToNewest");
 var sortRating = document.getElementById("sort-Rating");
-var viewBigBoxes = document.getElementById("view-BigBoxes");
-var viewTable = document.getElementById("view-Table");
 
 var searchWords = function (){
     console.log("starting searchWords");
     var words = document.getElementById("search-words").value.toUpperCase();
     if (words == "")
     {
-        for (var p = 0; projects.length; p++)
+        for (var p = 0; p < projects.length; p++)
         {
+            console.log("p is " + p);
             projects[p].style.display = "inline-block";
         }        
     }
     else
     {
-        for (var p = 0; projects.length; p++)
+        for (var p = 0; p < projects.length; p++)
         {
             var project = projects[p];
             if (project.textContent.toUpperCase().indexOf(words) > -1)

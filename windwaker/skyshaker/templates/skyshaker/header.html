@@ -1,11 +1,31 @@
-<header>
-<table>
-<tbody>
-<tr>
-<td id="header-title"><a href={% url 'index' %}>GEOMAKERS</a></td>
-<td id="header-search">
-<input type="text" id="header-search-textbox" placeholder="Quick Search">
-<button type="submit" id="header-search-button">Go</button>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    <a class="navbar-brand" href={% url 'index' %}>Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <form class="navbar-form navbar-left" role="search" id="header-search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Quick Search" id="header-search-textbox">
+        </div>
+        <button type="submit" class="btn btn-default" id="header-search-button">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href={% url 'donate' %}>Donate</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
 <script>
 document.getElementById("header-search-button").addEventListener("click", startQuickSearch);
 
@@ -27,9 +47,3 @@ function startQuickSearch(){
 }
 
 </script>
-</td>
-<td id="header-donate"><a style="text-decoration: none; color: rgb(245, 91, 41);" href={% url 'donate' %}>Donate</a></td>
-</tr>
-</tbody>
-</table>
-</header>

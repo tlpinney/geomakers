@@ -1,126 +1,162 @@
 {% extends "skyshaker/base.html" %}
 {% block content %}
-<div id="home-middle">
-<div id="home-part-1">
-    <div id="home-part-1-wrapper">
-        <iframe src="//www.youtube.com/embed/poMGRbfgp38" allowfullscreen="" frameborder="0" height="315" width="560"></iframe>
-        <div id="home-start">
-            <input type="radio" id="homeStartButton">
-            <label class="button1" for="homeStartButton">Start Here Button</label>
-            <a id="home-signup-withemail" href={% url 'register' %}>Sign up with email</a>
-            <p id="home-signup-disclaimer">By clicking "Sign up" you agree to our Terms of Service and Privacy Policy.</p>
-            <a href={% url 'login' %}><div class="button1" style="margin-top: 50px;">Login</div></a>
-        </div>
-    </div>
-</div>
-<div id="home-part-2">
-    <div id="home-dream">
-        <div class="hexagon">
-            <div class="hexagon-left"></div>
-            <div class="hexagon-middle"></div>
-            <div class="hexagon-right"></div>
-        </div>
-        <div class="home-textunderhex">Dream. Invent. Think. Brainstorm. This is where you dream of ideas for others to build.</div>
-        <div class="button2 bg-purple">Dream</div>
-    </div>
-    <div id="home-make">
-        <div class="hexagon">
-            <div class="hexagon-left"></div>
-            <div class="hexagon-middle"></div>
-            <div class="hexagon-right"></div>
-        </div>
-        <div class="home-textunderhex">Blueprints. Schematics. Drawings. Instructions. 3D Print. Make GeoDreams a physical reality.</div>
-        <div class="button2 bg-blue">Make</div>
-    </div>
-    <div id="home-boost">
-        <div class="hexagon">
-            <div class="hexagon-left"></div>
-            <div class="hexagon-middle"></div>
-            <div class="hexagon-right"></div>
-        </div>
-        <div class="home-textunderhex">Download. Collect. Investigate. Photograph. Boost and share data of your surroundings or universe.</div>
-        <div class="button2 bg-green">Boost</div>
-    </div>
-</div>
-<div id="home-part-3">
-    <table><tbody><tr>
-        <td id="home-popular">Popular</td>
-        <td id="home-see_all">See all</td>
-    </tr></tbody></table>
-    <div id="home-projects">
-        <div class="home-project">
-            <img src="http://geomakers.org/assets/img/portfolio/folio04.jpg">
-            <div class="home-project-text">
-                <span>Baloon Project</span>
-                <p>Ballon project description Lorem ipsum dolor sit amet, torquator prodesset eam id, an partem fabulas senserit his.  An per quod natum volumus.</p>
-                <p>STARS</p>
-                <div class="home-project-footer">
-                    <div class="home-project-builds">
-                        <p class="home-project-number">546</p>
-                        <p>builds</p>
+        <article>
+            <div class="jumbotron" id="home-jumbotron">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <iframe src="http://player.vimeo.com/video/100365662?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
                     </div>
-                    <div class="home-project-shoutouts">
-                        <p class="home-project-number">41,000</p>
-                        <p>shoutouts</p>
+                    <div class="col-sm-3">
+                        <button class="btn btn-sm btn-block">Start Here</button>
+                        <!--<button class="btn btn-sm btn-fb btn-block">Sign in with Facebook</button>
+                        <button class="btn btn-sm btn-go btn-block">Sign in with Google</button>-->
+                        <a href={% url 'register' %}><button class="btn btn-sm btn-block">Sign up with e-mail</button></a>
+                        <br/>
+                        <h5>By clicking "Sign up", you agree to our Terms of Service and Privacy Policy.</h5>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="home-project">
-            <img src="http://geomakers.org/assets/img/portfolio/folio04.jpg">
-            <div class="home-project-text">
-                <span>Baloon Project</span>
-                <p>Ballon project description Lorem ipsum dolor sit amet, torquator prodesset eam id, an partem fabulas senserit his.  An per quod natum volumus.</p>
-                <p>STARS</p>
-                <div class="home-project-footer">
-                    <div class="home-project-builds">
-                        <p class="home-project-number">546</p>
-                        <p>builds</p>
+        </article>
+    
+        <article id="services" class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="service-block service-block-dream">
+                        <img class="service-icon" src="../static/skyshaker/bootstrap/img/geodreamer_NOT-FINAL.png" />
+                        <p>Dream. Invent. Think. Brainstorm.<br/> This is where you dream of ideas for others to build.</p>
+                        <button class="btn btn-dream btn-md btn-block"> DREAM</button>
                     </div>
-                    <div class="home-project-shoutouts">
-                        <p class="home-project-number">41,000</p>
-                        <p>shoutouts</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-block service-block-make">
+                        <img class="service-icon" src="../static/skyshaker/bootstrap/img/geomaker_NOT-FINAL.png" />
+                        <p>Blueprints. Schematics. Drawings.<br/> Instructions. 3D Print. Make GeoDreams a physical reality.</p>
+                        <button class="btn btn-make btn-md btn-block"> MAKE</button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-block service-block-boost">
+                        <img class="service-icon" src="../static/skyshaker/bootstrap/img/geobooster_NOT-FINAL.png" />
+                        <p>Download. Collect. Investigate.<br/> Boost and share data of your surroundings or universe.</p>
+                        <button class="btn btn-boost btn-md btn-block"> BOOST</button>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="home-project">
-            <img src="http://geomakers.org/assets/img/portfolio/folio04.jpg">
-            <div class="home-project-text">
-                <span>Baloon Project</span>
-                <p>Ballon project description Lorem ipsum dolor sit amet, torquator prodesset eam id, an partem fabulas senserit his.  An per quod natum volumus.</p>
-                <p>STARS</p>
-                <div class="home-project-footer">
-                    <div class="home-project-builds">
-                        <p class="home-project-number">546</p>
-                        <p>builds</p>
+        </article>
+        
+        <article id="popular" class="container-fluid">
+            <div class="row">
+                <h2>Popular GeoProjects</h2>
+                <div id="gallery">
+                    <div class="col-sm-3">
+                        <ul class="contentcard">
+                            <li class="card">
+                                <ul class="cardContainer">
+                                    <li class="photo">
+                                        <img src="../static/skyshaker/bootstrap/img/home_bg_image.jpg" />
+                                    </li>
+                                    <li class="price"><p>Balloon Project</p></li>
+                                    <li>
+                                        <ul class="options">
+                                            <li><span>Lorem ipsum dolor sit amet, modus utroque patrioque pro et, in zril maiorum voluptatibus nec. Ad augue qualisque mel, pri vidit ferri in. In idque concludaturque pri. </span></li>
+                                            <li>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star-empty"></span>
+                                                <span class="glyphicon glyphicon-star-empty"></span>
+                                                <span>(124)</span>
+                                            </li>
+                                            <li>556 <span>builds</span></li>
+                                            <li>4,100 <span>shoutouts</span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul> <!-- End ul#plans -->
                     </div>
-                    <div class="home-project-shoutouts">
-                        <p class="home-project-number">41,000</p>
-                        <p>shoutouts</p>
+                    <div class="col-sm-3">
+                        <ul class="contentcard">
+                            <li class="card">
+                                <ul class="cardContainer">
+                                    <li class="photo">
+                                        <img src="../static/skyshaker/bootstrap/img/home_bg_image.jpg" />
+                                    </li>
+                                    <li class="price"><p>Balloon Project</p></li>
+                                    <li>
+                                        <ul class="options">
+                                            <li><span>Lorem ipsum dolor sit amet, modus utroque patrioque pro et, in zril maiorum voluptatibus nec. Ad augue qualisque mel, pri vidit ferri in. In idque concludaturque pri. </span></li>
+                                            <li>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star-empty"></span>
+                                                <span class="glyphicon glyphicon-star-empty"></span>
+                                                <span>(124)</span>
+                                            </li>
+                                            <li>556 <span>builds</span></li>
+                                            <li>4,100 <span>shoutouts</span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul> <!-- End ul#plans -->
+                    </div>
+                    <div class="col-sm-3">
+                        <ul class="contentcard">
+                            <li class="card">
+                                <ul class="cardContainer">
+                                    <li class="photo">
+                                        <img src="../static/skyshaker/bootstrap/img/home_bg_image.jpg" />
+                                    </li>
+                                    <li class="price"><p>Balloon Project</p></li>
+                                    <li>
+                                        <ul class="options">
+                                            <li><span>Lorem ipsum dolor sit amet, modus utroque patrioque pro et, in zril maiorum voluptatibus nec. Ad augue qualisque mel, pri vidit ferri in. In idque concludaturque pri. </span></li>
+                                            <li>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star-empty"></span>
+                                                <span class="glyphicon glyphicon-star-empty"></span>
+                                                <span>(124)</span>
+                                            </li>
+                                            <li>556 <span>builds</span></li>
+                                            <li>4,100 <span>shoutouts</span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul> <!-- End ul#plans -->
+                    </div>
+                    <div class="col-sm-3">
+                        <ul class="contentcard">
+                            <li class="card">
+                                <ul class="cardContainer">
+                                    <li class="photo">
+                                        <img src="../static/skyshaker/bootstrap/img/home_bg_image.jpg" />
+                                    </li>
+                                    <li class="price"><p>Balloon Project</p></li>
+                                    <li>
+                                        <ul class="options">
+                                            <li><span>Lorem ipsum dolor sit amet, modus utroque patrioque pro et, in zril maiorum voluptatibus nec. Ad augue qualisque mel, pri vidit ferri in. In idque concludaturque pri. </span></li>
+                                            <li>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span class="glyphicon glyphicon-star-empty"></span>
+                                                <span class="glyphicon glyphicon-star-empty"></span>
+                                                <span>(124)</span>
+                                            </li>
+                                            <li>556 <span>builds</span></li>
+                                            <li>4,100 <span>shoutouts</span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul> <!-- End ul#plans -->
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="home-project">
-            <img src="http://geomakers.org/assets/img/portfolio/folio04.jpg">
-            <div class="home-project-text">
-                <span>Baloon Project</span>
-                <p>Ballon project description Lorem ipsum dolor sit amet, torquator prodesset eam id, an partem fabulas senserit his.  An per quod natum volumus.</p>
-                <p>STARS</p>
-                <div class="home-project-footer">
-                    <div class="home-project-builds">
-                        <p class="home-project-number">546</p>
-                        <p>builds</p>
-                    </div>
-                    <div class="home-project-shoutouts">
-                        <p class="home-project-number">41,000</p>
-                        <p>shoutouts</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
+        </article>
 {% endblock %}

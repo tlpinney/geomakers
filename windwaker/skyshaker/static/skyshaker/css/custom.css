@@ -82,6 +82,7 @@ footer table td div img{height: 25px;}
 
 #edit-proj{}
 .imageBlock{display: inline-block; vertical-align: top; width: 250px; height: 250px; border: 1px solid black; margin: 5px;}
+.imageImgWrapper img{width: 250px; height: 150px;}
 
 #profile-middle-top{height: 140px; width: 100%; background-color: rgb(229, 238, 243); text-align: left; padding: 20px 40px 20px 40px;}
 #profile-middle-top-left, #profile-middle-top-right{height: 100%; display: inline-block; vertical-align: top;}

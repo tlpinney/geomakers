@@ -87,6 +87,7 @@ def updateVideoEmbed(sender, instance, **kwargs):
 def updateProject(sender, instance, **kwargs):
     # add slug if doesn't exist    
     if instance.slug == "":
+        print "slug is '', so we're going to add a new one"
         instance.slug = slugify(instance.title)
 
     # update rating
@@ -101,6 +102,16 @@ def updateProject(sender, instance, **kwargs):
     instance.save()
     post_save.connect(updateProject, sender=Project)
 
+def updateImage(sender, instance, **kwargs):
+    # add caption if doesn't exist
+    if instance.caption == "":
+        print "caption is '', so we're going to add a new one"
+        instance.caption = os.path.split(instance.image.url)[1].split('.')[0].split('_')[0]
+    post_save.disconnect(updateImage, sender=Image)
+    instance.save()
+    post_save.connect(updateImage, sender=Image)
+
 # register the signal
 post_save.connect(updateVideoEmbed, sender=Video)
-post_save.connect(updateProject, sender=Project) 
+post_save.connect(updateProject, sender=Project)
+post_save.connect(updateImage, sender=Image)

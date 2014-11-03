@@ -94,72 +94,106 @@ def contribute(request):
     print 'finishing view: contribute'
     return render(request, 'skyshaker/contribute.html', {'projects': projects})
 
+
 def projectEdit(request, slug):
     print 'starting projectEdit with slug ' + slug 
     context = RequestContext(request)
+    project = get_object_or_404(Project, slug=slug)
+    print "project is ", project
 
-    if request.method == 'POST':
-        pass
-        """
-        print "request.method == 'POST'"
-        dataDict = dict(request.POST.iterlists())
-        print "dataDict is", dataDict
-        typeOfProject = str(unicode(dataDict[unicode('typeOfProject')][0]))
-        abstract = str(unicode(dataDict[unicode('abstract')][0]))
-        titleOfProject = str(unicode(dataDict[unicode('title')][0]))
-        location = str(unicode(dataDict[unicode('location')][0]))
-        project = Project.objects.create(owner_id=request.user.id, title=titleOfProject, abstract=abstract, location=location, rating=3, typeOfProject=typeOfProject)
+    if request.user.id == project.owner.id:
+        if request.method == 'POST':
+            print "request.method == 'POST'"
+            dataDict = dict(request.POST.iterlists())
+            print "dataDict is", dataDict
+            project.owner = User.objects.get(pk=str(unicode(dataDict[unicode('owner')][0])))
+            project.typeOfProject = str(unicode(dataDict[unicode('typeOfProject')][0]))
+            project.title = str(unicode(dataDict[unicode('title')][0]))
+            project.slug = str(unicode(dataDict[unicode('slug')][0]))
+            project.abstract = str(unicode(dataDict[unicode('abstract')][0]))
+            project.location = str(unicode(dataDict[unicode('location')][0]))
+            project.save()
+        
+            # add videos
+            titlesOfVideos = [str(unicode(v)) for v in dataDict[unicode('video_title')]]
+            print "titlesOfVideos are", titlesOfVideos
+            print "len(titlesOfVideos) is ", len(titlesOfVideos)
+
+            urlsOfVideos = [str(unicode(v)) for v in dataDict[unicode('video_url')]]
+            print "urlsOfVideos are", urlsOfVideos
+            print "len(urlsOfVideos) is ", len(urlsOfVideos)
+
+            numberOfNewVideos = max(len(titlesOfVideos), len(urlsOfVideos))
+
+            # delete all current videos
+            project.videos.all().delete()
+
+            # add in videos got from page
+            for i in range(0,numberOfNewVideos):
+                project.videos.create(title=titlesOfVideos[i], url=urlsOfVideos[i], embed="")
+
+            # add links
+            titlesOfLinks = [str(unicode(l)) for l in dataDict[unicode('link_title')]]
+            print "titlesOfLinks are", titlesOfLinks
+            print "len(titlesOfLinks) is ", len(titlesOfLinks)
+
+            urlsOfLinks = [str(unicode(l)) for l in dataDict[unicode('link_url')]]
+            print "urlsOfLinks are", urlsOfLinks
+            print "len(urlsOfLinks) is ", len(urlsOfLinks)
+
+            numberOfNewLinks = max(len(titlesOfLinks), len(urlsOfLinks))
+
+            # delete all current videos
+            project.links.all().delete()
+
+            # add in videos got from page
+            for i in range(0,numberOfNewLinks):
+                project.links.create(title=titlesOfLinks[i], url=urlsOfLinks[i])
 
 
-        # add videos
-        videos = []
-        for video in str(unicode(dataDict[unicode('videos')][0])).split(","):
-            videoStripped = video.strip()
-            if videoStripped != "":
-                videos.append(videoStripped)
-        print "videos are", videos
-        print "len(videos) is ", len(videos)
-        for url in videos:
-            titleOfVideo = ""
-            if 'youtube' in url:
-                idOfYoutubeVideo = re.search('(?<=v=)\w+', url).group(0)
-                #videoData = yt_service.GetYouTubeVideoEntry(video_id=idOfYoutubeVideo)
-                titleOfVideo = ""
-            elif 'vimeo' in url:
-                idOfVimeoVideo = re.search('(?<=com/)\w+', url).group(0)
-                titleOfVideo = ""
-            project.videos.create(title=titleOfVideo, url=url, embed="")
+            # do pictures
+            captions = [str(unicode(l)) for l in dataDict[unicode('image_caption')]]
+            print "captions is ", captions
+            numberOfCaptions = len(captions)
+            numberOfNewImageObjects = numberOfCaptions
+            print "numberOfNewImageObjects is", numberOfNewImageObjects
 
-        # add links
-        links = []
-        for link in str(unicode(dataDict[unicode('links')][0])).split(","):
-            linkStripped = link.strip()
-            if linkStripped != "":
-                links.append(linkStripped)
-        print "links is ", links
-        print "len(links) is ", len(links)
-        for url in links:
-            print "url is ", url
-            titleOfLink = BeautifulSoup(requests.get(url).content).title.string
-            project.links.create(title=titleOfLink, url=url)
+            requestFILES = request.FILES
+            print "requestFILES is", requestFILES
+            projectImages = project.images.all()
+            numberOfOldImageObjects = len(projectImages)
 
-        # add pictures
-        if 'image' in request.FILES:
-            project.images.create(image=request.FILES['image'], caption=request.FILES['image'].name[:-4])
 
-        print "created objects"
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-        """
+            # udpate or create images
+            for i in range(0, numberOfNewImageObjects):
+                print "for i ", i
 
-    elif request.method =='GET':
-        print "request.method == 'GET'"
+                # we got a new image!
+                if i > numberOfOldImageObjects-1:
+                    print "i > numberOfOldImageObjects, which is", i,">", numberOfOldImageObjects
+                    project.images.create(image=requestFILES["imageInput_"+str(i)], caption=captions[i])
+                else:
+                    print "i <= numberOfOldImageObjects, which is", i,"<=", numberOfOldImageObjects
+                    # check if uploaded a new image
+                    if "imageInput_"+str(i) in requestFILES:
+                        print "uploaded a new image for image ", i
+                        projectImages[i].image = requestFILES["imageInput_"+str(i)]
+                    projectImages[i].caption = captions[i]
+                    projectImages[i].save()
+
+            print "edited objects"
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+        elif request.method =='GET':
+            print "request.method == 'GET'"
+            projects = Project.objects.all()
+            users = User.objects.all()    
+            print 'finishing view: projectEdit'
+            return render(request, 'skyshaker/edit-project.html', {'project': project, 'projects': projects, 'users': users})
+
+    elif request.user.id != project.owner.id:
         project = get_object_or_404(Project, slug=slug)
-        print "project is ", project
-        projects = Project.objects.all()
-        users = User.objects.all()
-
-    print 'finishing view: projectEdit'
-    return render(request, 'skyshaker/edit-project.html', {'project': project, 'projects': projects, 'users': users})
+        return HttpResponseRedirect("/projects/"+slug)
 
 def register(request):
     # Like before, get the request's context.
