@@ -1,5 +1,3 @@
-create role to postgres
-
 ###GeoMakers(Avalanche) Installation Guide
 
 ####Update
