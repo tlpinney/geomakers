@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# assuming you've alreay cloned this repo to your user's home directory with the command on the following line
+# assuming you've alreay installed git and cloned this repo to your user's home directory with the command on the following line
 # git clone http://github.com/geomakers/geomakers_project.git ~/geomakers_project
 sudo apt-get update;
-sudo apt-get install -y curl vim git postgresql libpq-dev postgresql-server-dev-all python python-dev python-pip;
+sudo apt-get install -y curl vim postgresql libpq-dev postgresql-server-dev-all python python-dev python-pip;
 sudo -u postgres createdb geomakers;
 sudo pip install psycopg2;
 git clone http://github.com/django/django.git ~/django-trunk;
