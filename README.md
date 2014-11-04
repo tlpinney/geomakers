@@ -19,10 +19,13 @@ sudo apt-get install -y curl vim git postgresql libpq-dev postgresql-server-dev-
 * python-dev: code language that django uses
 * python-pip: used to install python packages
 
+#### Add Current User as User in Postgres Database
+sudo -u postgres psql -c "CREATE USER $USER WITH SUPERUSER;"
+
 ####Create Database
 You will now create the databse that the geomakers_app will use.  The database is called geomakers.
 ```
-sudo -u postgres createdb geomakers;
+psql -c "CREATE DATABASE geomakers;"
 ```
 
 ###Install Psycopg
@@ -57,13 +60,13 @@ git clone http://github.com/geomakers/geomakers_project.git ~/geomakers_project
 ####Create Database (db) Tables
 The following command creates the tables needed by the INSTALLED_APPS.
 ```
-sudo python ~/geomakers_site/geomakers_site/manage.py makemigrations
-sudo -u postgres python ~/geomakers_site/geomakers_site/manage.py migrate
+python ~/geomakers_site/geomakers_site/manage.py makemigrations
+python ~/geomakers_site/geomakers_site/manage.py migrate
 ```
 
 ####Run the Development Server
 ```
-sudo -u postgres python ~/geomakers_project/geomakers_site/manage.py runserver
+python ~/geomakers_project/geomakers_site/manage.py runserver
 ```
 
 ####Create Admin User
@@ -71,5 +74,5 @@ The following command will prompt you for a username and email address.
 Enter ```admin``` as username and enter your email address.
 And enter your password twice.
 ```
-sudo -u postgres python ~/geomakers_project/geomakers_site/manage.py createsuperuser;
+python ~/geomakers_project/geomakers_site/manage.py createsuperuser;
 ```
