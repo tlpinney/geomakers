@@ -6,17 +6,7 @@ from django.template.defaultfilters import slugify
 import os, re
 
 
-class UserProfile(models.Model):
-    # This line is required.  Links UserProfile to a User model instance.
-    user = models.OneToOneField(User, null=True, blank=True)
-    description = models.TextField(null=True, blank=True)
-    location = models.CharField(max_length=200, null=True, blank=True)
-    facebook = models.URLField(default="", null=True, blank=True)
-    twitter = models.URLField(default="", null=True, blank=True)
-    linkedin = models.URLField(default="", null=True, blank=True)
-    picture = models.ImageField(upload_to="images", null=True, blank=True, default=settings.STATIC_URL+"skyshaker/img/user/default.jpg")
-    def __str__(self):
-        return self.user.username
+
 
 class Image(models.Model):
     image = models.ImageField(upload_to="images", null=True, blank=True)
@@ -24,21 +14,9 @@ class Image(models.Model):
     def __str__(self):
         return os.path.split(self.image.name)[1]
 
-class Tag(models.Model):
-    title = models.CharField(max_length=200, null=True, blank=True)
-
 class Link(models.Model):
     title = models.CharField(max_length=200, null=True, blank=True)
     url = models.URLField(null=True, blank=True)
-    def __str__(self):
-        return self.title
-    class Meta:
-        ordering = ['title']
-
-class Video(models.Model):
-    title = models.CharField(max_length=200, null=True, blank=True)
-    url = models.URLField(null=True, blank=True)
-    embed = models.TextField(default="",null=True,blank=True)
     def __str__(self):
         return self.title
     class Meta:
@@ -71,6 +49,52 @@ class Project(models.Model):
             return self.title
         elif self.owner.username != "":
             return self.title + " by " + self.owner.username
+
+
+
+class Tag(models.Model):
+    title = models.CharField(max_length=200, null=True, blank=True)
+
+class UserProfile(models.Model):
+    # This line is required.  Links UserProfile to a User model instance.
+    user = models.OneToOneField(User, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    location = models.CharField(max_length=200, null=True, blank=True)
+    facebook = models.URLField(default="", null=True, blank=True)
+    twitter = models.URLField(default="", null=True, blank=True)
+    linkedin = models.URLField(default="", null=True, blank=True)
+    picture = models.ImageField(upload_to="images", null=True, blank=True, default=settings.STATIC_URL+"skyshaker/img/user/default.jpg")
+    def __str__(self):
+        return self.user.username
+
+class Video(models.Model):
+    title = models.CharField(max_length=200, null=True, blank=True)
+    url = models.URLField(null=True, blank=True)
+    embed = models.TextField(default="",null=True,blank=True)
+    def __str__(self):
+        return self.title
+    class Meta:
+        ordering = ['title']
+
+class Resource(models.Model):
+    title = models.CharField(max_length=200, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    url = models.URLField(null=True, blank=True)
+    def __str__(self):
+        return self.title
+    class Meta:
+        ordering = ['title']
+
+# the bios that apear on the geomakers.org/team page
+class TeamMember(models.Model):
+    name = models.CharField(max_length=200, null=True, blank=True)
+    title = models.CharField(max_length=200, null=True, blank=True)
+    bio = models.TextField(null=True, blank=True)
+    picture = models.ImageField(upload_to="images", null=True, blank=True, default=settings.STATIC_URL+"skyshaker/img/user/default.jpg")
+    def __str__(self):
+        return self.name
+    class Meta:
+        ordering = ['name']
 
 def updateVideoEmbed(sender, instance, **kwargs):
     instance_url = str(instance.url)

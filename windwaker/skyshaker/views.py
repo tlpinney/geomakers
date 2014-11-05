@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render, render_to_response
 from django.template import RequestContext
-from skyshaker.models import Image, Link, Project, Tag, Video, UserProfile
+from skyshaker.models import Image, Link, MakerSpace, Project, Resource, Tag, TeamMember, Video, UserProfile
 from skyshaker.forms import UserForm, UserProfileForm, ContributeForm, ImageForm
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
@@ -11,25 +11,6 @@ from django.core import serializers
 import json, re, requests
 from bs4 import BeautifulSoup
 
-def index(request):
-    return render(request, 'skyshaker/index.html')
-
-def donate(request):
-    return render(request, 'skyshaker/donate.html')
-
-def project(request, slug):
-    project = get_object_or_404(Project, slug=slug)
-    return render(request, 'skyshaker/project.html', {'project': project})
-
-def profile(request, slug):
-    user = get_object_or_404(User, username=slug)
-    userProfile = get_object_or_404(UserProfile, user=user)
-    return render(request, 'skyshaker/profile.html', {'user': user, 'userProfile': userProfile})
-
-def search(request):
-    projects = Project.objects.all()
-    json = serializers.serialize('json', projects)
-    return render(request, 'skyshaker/search.html', {'projects': projects, 'json': json})
 
 def contribute(request):
     print 'starting view: contribute'
@@ -94,6 +75,29 @@ def contribute(request):
     print 'finishing view: contribute'
     return render(request, 'skyshaker/contribute.html', {'projects': projects})
 
+def donate(request):
+    return render(request, 'skyshaker/donate.html')
+
+def index(request):
+    return render(request, 'skyshaker/index.html')
+
+def makerspaces(request):
+    makerspaces = MakerSpace.objects.all()
+    return render(request, 'skyshaker/makerspaces.html', {'makerspaces': makerspaces})
+
+def profile(request, slug):
+    user = get_object_or_404(User, username=slug)
+    userProfile = get_object_or_404(UserProfile, user=user)
+    return render(request, 'skyshaker/profile.html', {'user': user, 'userProfile': userProfile})
+
+def profileEdit(request, slug):
+    user = get_object_or_404(User, username=slug)
+    userProfile = get_object_or_404(UserProfile, user=user)
+    return render(request, 'skyshaker/profile.html', {'user': user, 'userProfile': userProfile})
+
+def project(request, slug):
+    project = get_object_or_404(Project, slug=slug)
+    return render(request, 'skyshaker/project.html', {'project': project})
 
 def projectEdit(request, slug):
     print 'starting projectEdit with slug ' + slug 
@@ -254,6 +258,19 @@ def register(request):
             'skyshaker/register.html',
             {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
             context)
+
+def resources(request):
+    resources = Resource.objects.all()
+    return render(request, 'skyshaker/resources.html', {'resources': resources})
+
+def search(request):
+    projects = Project.objects.all()
+    json = serializers.serialize('json', projects)
+    return render(request, 'skyshaker/search.html', {'projects': projects, 'json': json})
+
+def team(request):
+    teamMembers = TeamMember.objects.all()
+    return render(request, 'skyshaker/team.html', {'teamMembers': teamMembers})
 
 def user_login(request):
     # Like before, obtain the context for the user's request.
