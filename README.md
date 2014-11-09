@@ -88,7 +88,11 @@ sudo -u geomakers python /home/geomakers/geomakers/windwaker/manage.py createsup
 ####Install mod_python
 This connects the django application to the apache server
 ```
-sudo git clone https://github.com/grisha/mod_python /var/mod_python
+sudo git clone https://github.com/grisha/mod_python /var/mod_python;
+cd /var/mod_python;
+./configure;
+make;
+sudo make install;
 ```
 
 
