@@ -30,7 +30,7 @@ sudo -u postgres psql -c "CREATE USER geomakers;"
 ```
 
 ####Create Database
-You will now create the databse that the geomakers_app will use.  The database is called geomakers.
+Create geomakers database
 ```
 psql -c "CREATE DATABASE geomakers;"
 ```
