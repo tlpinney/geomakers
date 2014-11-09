@@ -77,15 +77,15 @@ sudo -u geomakers python /home/geomakers/geomakers/windwaker/manage.py makemigra
 sudo -u geomakers python /home/geomakers/geomakers/windwaker/manage.py migrate
 ```
 
-####Run the Development Server
-```
-sudo -u geomakers python ~/geomakers_project/geomakers_site/manage.py runserver
-```
-
 ####Create Admin User
 The following command will prompt you for a username and email address.
 Enter ```admin``` as username and enter your email address.
 And enter your password twice.
 ```
-python ~/geomakers_project/geomakers_site/manage.py createsuperuser;
+sudo -u geomakers python /home/geomakers/geomakers/windwaker/manage.py createsuperuser;
+```
+
+####Run the Development Server
+```
+sudo -u geomakers python ~/geomakers_project/geomakers_site/manage.py runserver
 ```
