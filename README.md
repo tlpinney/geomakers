@@ -67,7 +67,7 @@ sudo pip install beautifulsoup4;
 
 ####Download This Repo
 ```
-git clone http://github.com/geomakers/geomakers_project.git ~/geomakers_project
+sudo -u geomakers git clone http://github.com/geomakers/geomakers.git /home/geomakers/geomakers
 ```
 
 ####Create Database (db) Tables
