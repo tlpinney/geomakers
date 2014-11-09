@@ -87,5 +87,5 @@ sudo -u geomakers python /home/geomakers/geomakers/windwaker/manage.py createsup
 
 ####Run the Development Server
 ```
-sudo -u geomakers python ~/geomakers_project/geomakers_site/manage.py runserver
+sudo -u geomakers python /home/geomakers/geomakers/windwaker/manage.py runserver
 ```
