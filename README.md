@@ -94,7 +94,7 @@ sudo apt-get install libapache2-mod-wsgi
 
 ####Copy Over Apache 2 Config File to Site-Enabled Directory
 ```
-sudo cp /home/geomakers/geomakers.conf /etc/apache2/sites-available/geomakers.conf
+sudo cp /home/geomakers/geomakers/geomakers.conf /etc/apache2/sites-available/geomakers.conf
 ```
 
 ####Run the Development Server
