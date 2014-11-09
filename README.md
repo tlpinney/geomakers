@@ -56,7 +56,7 @@ sudo -u geomakers git clone http://github.com/django/django.git /home/geomakers/
 ####Make Django Code Importable
 Make Django code importable into Python with the following
 ```
-sudo pip install -e ~/django-trunk/
+sudo pip install -e /home/geomakers/django-trunk/
 ```
 
 ###Install BeautifulSoup4
