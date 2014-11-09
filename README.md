@@ -19,6 +19,11 @@ sudo apt-get install -y curl vim git postgresql libpq-dev postgresql-server-dev-
 * python-dev: code language that django uses
 * python-pip: used to install python packages
 
+#### Create GeoMakers User for Ubuntu Machine
+```
+sudo adduser geomakers
+```
+
 #### Add Current User as User in Postgres Database
 sudo -u postgres psql -c "CREATE USER $USER WITH SUPERUSER;"
 
