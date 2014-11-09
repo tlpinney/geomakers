@@ -25,7 +25,9 @@ sudo adduser geomakers
 ```
 
 #### Add Current User as User in Postgres Database
+```
 sudo -u postgres psql -c "CREATE USER geomakers;"
+```
 
 ####Create Database
 You will now create the databse that the geomakers_app will use.  The database is called geomakers.
