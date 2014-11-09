@@ -48,9 +48,9 @@ sudo pip install psycopg2;
 ```
 
 ####Download Django
-The following code will download the django code into the current user's home directory. 
+Download the django code into the geomakers user's home directory. 
 ```
-git clone http://github.com/django/django.git ~/django-trunk
+sudo -u geomakers git clone http://github.com/django/django.git /home/geomakers/django-trunk
 ```
 
 ####Make Django Code Importable
