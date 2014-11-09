@@ -87,18 +87,10 @@ And enter your password twice.
 sudo -u geomakers python /home/geomakers/geomakers/windwaker/manage.py createsuperuser;
 ```
 
-####Install mod_python
-This connects the django application to the apache server
+####Install WSGI
 ```
-sudo git clone https://github.com/grisha/mod_python /var/mod_python;
-cd /var/mod_python;
-sudo ./configure;
-sudo make;
-sudo make install;
+sudo apt-get install libapache2-mod-wsgi
 ```
-
-####Modify Apache2 Config File, httpd.conf or apache2.conf
-Add ```LoadModule python_module /usr/lib/apache2/modules/mod_python.so``` to apache2.conf
 
 
 ####Run the Development Server
