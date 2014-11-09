@@ -92,6 +92,8 @@ sudo -u geomakers python /home/geomakers/geomakers/windwaker/manage.py createsup
 sudo apt-get install libapache2-mod-wsgi
 ```
 
+####Copy Over Apache 2 Config File to Site-Enabled Directory
+
 
 ####Run the Development Server
 ```
