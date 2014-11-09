@@ -24,7 +24,7 @@ sudo apt-get install -y curl vim git postgresql libpq-dev postgresql-server-dev-
 sudo adduser geomakers
 ```
 
-#### Add Current User as User in Postgres Database
+#### Create geomakers User for Postgres
 ```
 sudo -u postgres psql -c "CREATE USER geomakers;"
 ```
