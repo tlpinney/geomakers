@@ -1,0 +1,147 @@
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+#footer {
+    background-image: url("../img/home_bg_image.jpg");
+    padding: 15px 0px;
+    color: white;
+}
+
+/* ========BUTTONS========*/
+
+/* DREAM */
+.btn-dream {
+  background-color: #8F0AD7;
+  border-color: white;
+  color: white;
+  font-size: 1.5em;
+}
+.btn-dream:hover,
+.btn-dream:focus {
+  background-color: white;
+  color: #8F0AD7
+}
+.btn-dream:active,
+.btn-dream.active {
+  background-color: white;
+  color: #8F0AD7
+}
+.btn-dream:disabled,
+.btn-dream[disabled] {
+  background-color: #419641;
+  background-image: none;
+}
+
+/* MAKE */
+.btn-make {
+  background-color: #0A90D7;
+  border-color: white;
+  color: white;
+  font-size: 1.5em;
+}
+.btn-make:hover,
+.btn-make:focus {
+  background-color: white;
+  color: #0A90D7
+}
+.btn-make:active,
+.btn-make.active {
+  background-color: white;
+  color: #0A90D7
+}
+.btn-make:disabled,
+.btn-make[disabled] {
+  background-color: #419641;
+  background-image: none;
+}
+
+/* BOOST */
+.btn-boost {
+  background-color: #0AD78C;
+  border-color: white;
+  color: white;
+  font-size: 1.5em;
+}
+.btn-boost:hover,
+.btn-boost:focus {
+  background-color: white;
+  color: #0AD78C
+}
+.btn-boost:active,
+.btn-boost.active {
+  background-color: white;
+  color: #0AD78C
+}
+.btn-boost:disabled,
+.btn-boost[disabled] {
+  background-color: #419641;
+  background-image: none;
+}
+
+/* FACEBOOK */
+.btn-fb {
+  background-color: dodgerblue;
+  color: white;
+  font-size: 1.5em;
+}
+.btn-fb:hover,
+.btn-fb:focus {
+  background-color: white;
+  color: dodgerblue
+}
+.btn-fb:active,
+.btn-fb.active {
+  background-color: white;
+  color: dodgerblue
+}
+.btn-fb:disabled,
+.btn-fb[disabled] {
+  background-color: #419641;
+  background-image: none;
+}
+
+/* TWITTER */
+.btn-tw {
+  background-color: deepskyblue;
+  color: white;
+  font-size: 1.5em;
+}
+.btn-tw:hover,
+.btn-tw:focus {
+  background-color: white;
+  color: deepskyblue
+}
+.btn-tw:active,
+.btn-tw.active {
+  background-color: white;
+  color: deepskyblue
+}
+.btn-tw:disabled,
+.btn-tw[disabled] {
+  background-color: #419641;
+  background-image: none;
+}
+
+/* GOOGLE */
+.btn-go {
+  background-color: crimson;
+  color: white;
+  font-size: 1.5em;
+}
+.btn-go:hover,
+.btn-go:focus {
+  background-color: white;
+  color: crimson
+}
+.btn-go:active,
+.btn-go.active {
+  background-color: white;
+  color: crimson
+}
+.btn-go:disabled,
+.btn-go[disabled] {
+  background-color: #419641;
+  background-image: none;
+}
+
