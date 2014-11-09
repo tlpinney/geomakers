@@ -92,8 +92,8 @@ This connects the django application to the apache server
 ```
 sudo git clone https://github.com/grisha/mod_python /var/mod_python;
 cd /var/mod_python;
-./configure;
-make;
+sudo ./configure;
+sudo make;
 sudo make install;
 ```
 
