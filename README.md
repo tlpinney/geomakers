@@ -10,6 +10,7 @@ sudo apt-get update
 sudo apt-get install -y curl vim git postgresql libpq-dev postgresql-server-dev-all python python-dev python-pip
 ```
 * curl: used to download from the internet
+* gcc: python_mod uses this
 * vim: used to edit files in terminal
 * git: used to download code from github repositories
 * postgresql: the database that stores the information
