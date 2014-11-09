@@ -99,5 +99,5 @@ sudo cp /home/geomakers/geomakers.conf /etc/apache2/sites-available/geomakers.co
 
 ####Run the Development Server
 ```
-sudo -u geomakers python /home/geomakers/geomakers/windwaker/manage.py runserver
+sudo -u geomakers python /home/geomakers/geomakers/geomakers/windwaker/manage.py runserver
 ```
