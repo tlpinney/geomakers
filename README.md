@@ -97,6 +97,9 @@ sudo make;
 sudo make install;
 ```
 
+####Modify Apache2 Config File, httpd.conf or apache2.conf
+Add ```LoadModule python_module /usr/lib/apache2/modules/mod_python.so``` to apache2.conf
+
 
 ####Run the Development Server
 ```
