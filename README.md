@@ -7,8 +7,9 @@ sudo apt-get update
 
 ####Install Required Packages
 ```
-sudo apt-get install -y curl vim git postgresql libpq-dev postgresql-server-dev-all python python-dev python-pip
+sudo apt-get install -y apache2-dev curl vim git postgresql libpq-dev postgresql-server-dev-all python python-dev python-pip
 ```
+* apache2-dev: python_mod needs this
 * curl: used to download from the internet
 * gcc: python_mod uses this
 * vim: used to edit files in terminal
