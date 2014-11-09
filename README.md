@@ -97,6 +97,11 @@ sudo apt-get install libapache2-mod-wsgi
 sudo cp /home/geomakers/geomakers/geomakers.conf /etc/apache2/sites-available/geomakers.conf
 ```
 
+####Restart Apache
+```
+sudo service apache2 restart
+```
+
 ####Run the Development Server
 ```
 sudo -u geomakers python /home/geomakers/geomakers/geomakers/windwaker/manage.py runserver
