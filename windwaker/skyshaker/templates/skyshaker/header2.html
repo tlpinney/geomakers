@@ -1,9 +1,12 @@
 <ul class="nav nav-tabs" role="tablist">
-    {% if user.is_authenticated %}<li class="active"><a href="#profile" role="tab" data-toggle="tab">Your Profile</a></li>{% endif %}
+    {% if user.is_authenticated %}<li class="active"><a href="#profile">Your Profile</a></li>{% endif %}
+    {% if user.is_authenticated %}<li><a href={% url 'contribute' %}>Contribute</a></li>{% endif %}
+    <!--
     <li><a href={% url 'contribute' %} role="tab" data-toggle="tab">GeoDreamer</a></li>
     <li><a href={% url 'contribute' %} role="tab" data-toggle="tab">GeoMaker</a></li>
     <li><a href={% url 'contribute' %} role="tab" data-toggle="tab">GeoBooster</a></li>
-    <li><a href="#resources" role="tab" data-toggle="tab">Resources</a></li>
-    <li><a href="#makerspaces" role="tab" data-toggle="tab">Maker Spaces</a></li>
-    {% if user.is_authenticated %}<li><a href={% url 'logout' %} role="tab" data-toggle="tab">Logout</a></li>{% else %}<li><a href={% url 'login' %} role="tab" data-toggle="tab">Login</a></li>{% endif %}
+    -->
+    <li><a href={% url 'resources' %}>Resources</a></li>
+    <li><a href={% url 'makerspaces' %}>MakerSpaces</a></li>
+    {% if user.is_authenticated %}<li><a href={% url 'logout' %}>Logout</a></li>{% else %}<li><a href={% url 'login' %}>Login</a></li>{% endif %}
 </ul>

@@ -10,8 +10,9 @@ from django.contrib.auth.models import User
 from django.core import serializers
 import json, re, requests
 from bs4 import BeautifulSoup
+from django.template.defaultfilters import slugify
 
-
+@login_required
 def contribute(request):
     print 'starting view: contribute'
     context = RequestContext(request)
@@ -23,8 +24,9 @@ def contribute(request):
         typeOfProject = str(unicode(dataDict[unicode('typeOfProject')][0]))
         abstract = str(unicode(dataDict[unicode('abstract')][0]))
         titleOfProject = str(unicode(dataDict[unicode('title')][0]))
+        slug = slugify(titleOfProject)
         location = str(unicode(dataDict[unicode('location')][0]))
-        project = Project.objects.create(owner_id=request.user.id, title=titleOfProject, abstract=abstract, location=location, rating=3, typeOfProject=typeOfProject)
+        project = Project.objects.create(owner_id=request.user.id, title=titleOfProject, slug=slug, abstract=abstract, location=location, rating=3, typeOfProject=typeOfProject)
 
 
         # add videos
@@ -64,7 +66,8 @@ def contribute(request):
             project.images.create(image=request.FILES['image'], caption=request.FILES['image'].name[:-4])
 
         print "created objects"
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+#        returnrequest.META.get('HTTP_REFERER') HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        return HttpResponseRedirect("/projects/"+slug)
 
     elif request.method =='GET':
         print "request.method == 'GET'"

@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     url(r'^resources/$', views.resources, name='resources'),
     url(r'^team/$', views.team, name='team'),
     url(r'^donate/$', views.donate, name='donate'),
+    url(r'^login/$', views.user_login, name='login'),
 #    url(r'^geodream/$', views.geodream, name='geodream'),
 )
 

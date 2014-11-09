@@ -25,6 +25,7 @@ footer table:last-child {padding-top: 20px;}
 footer table:last-child tbody tr td{width: 50%;}
 footer table:last-child tbody tr td:last-child{text-align: right;}
 footer table td div img{height: 25px;}
+.footer-text{color: white;}
 
 #home-middle{}
 #home-part-1{padding: 50px 40px 40px 40px; height: 710px;}
@@ -84,7 +85,6 @@ footer table td div img{height: 25px;}
 .imageBlock{display: inline-block; vertical-align: top; width: 250px; height: 250px; border: 1px solid black; margin: 5px;}
 .imageImgWrapper img{width: 250px; height: 150px;}
 
-#profile-middle-top{height: 140px; width: 100%; background-color: rgb(229, 238, 243); text-align: left; padding: 20px 40px 20px 40px;}
 #profile-middle-top-left, #profile-middle-top-right{height: 100%; display: inline-block; vertical-align: top;}
 #profile-pic{height: 100px; width: auto;}
 #profile-name{font-weight: bold; font-size: 16pt;}
@@ -108,12 +108,12 @@ footer table td div img{height: 25px;}
 .search-project-datetime{display: inline-block; font-size: 8pt;}
 
 .submit-header{font-size: 18pt; color: white; margin-bottom: 10px;}
-#geodream-middle{background-color: #8F0AD7; padding: 30px;}
+#contribute-middle{background-color: #8F0AD7; padding: 30px;}
 .submit-panel{padding: 30px; background-color: white; border-radius: 10px; border: 2px solid rgb(204,204,204);}
 .submit-part{margin: 20px;}
 .submit-part label{vertical-align:top; display: block;}
 .submit-panel-left{max-width: 700px;}
-.submit-panel input, .submit-panel textarea{width: 100%;}
+.submit-panel input, .submit-panel textarea, .submit-panel select{width: 100%;}
 #submit-image-img{width: 100px; height: 100px; border: 1px solid #8F0AD7; border-radius: 10px;}
 
 
@@ -127,3 +127,5 @@ h3{color: rgb(120,120,120); font-size: 20px; text-align: left;}
 .bg-purple{background-color: #8F0AD7;}
 .bg-blue{background-color: #0A90D7;}
 .bg-green{background-color: #0AD786;}
+
+#login-middle{padding: 30px;}
