@@ -73,13 +73,13 @@ sudo -u geomakers git clone http://github.com/geomakers/geomakers.git /home/geom
 ####Create Database (db) Tables
 The following command creates the tables needed by the INSTALLED_APPS.
 ```
-python ~/geomakers_site/geomakers_site/manage.py makemigrations
-python ~/geomakers_site/geomakers_site/manage.py migrate
+sudo -u geomakers python /home/geomakers/geomakers/windwaker/manage.py makemigrations
+sudo -u geomakers python /home/geomakers/geomakers/windwaker/manage.py migrate
 ```
 
 ####Run the Development Server
 ```
-python ~/geomakers_project/geomakers_site/manage.py runserver
+sudo -u geomakers python ~/geomakers_project/geomakers_site/manage.py runserver
 ```
 
 ####Create Admin User
