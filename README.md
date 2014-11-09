@@ -97,6 +97,11 @@ sudo apt-get install libapache2-mod-wsgi
 sudo cp /home/geomakers/geomakers/geomakers.conf /etc/apache2/sites-available/geomakers.conf
 ```
 
+####Create symbolic link
+```
+sudo ln -s /etc/apache2/sites-available/geomakers.conf /etc/apache2/sites-enabled/geomakers.conf
+```
+
 ####Restart Apache
 ```
 sudo service apache2 restart
