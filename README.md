@@ -32,7 +32,13 @@ sudo -u postgres psql -c "CREATE USER geomakers;"
 ####Create Database
 Create geomakers database
 ```
-psql -c "CREATE DATABASE geomakers;"
+sudo -u postgres psql -c "CREATE DATABASE geomakers;"
+```
+
+####Change Ownership of geomakers database to the geomakers user
+Create geomakers database
+```
+sudo -u postgres psql -c "ALTER DATABASE geomakers OWNER TO geomakers;"
 ```
 
 ###Install Psycopg
