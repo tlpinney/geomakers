@@ -5,6 +5,7 @@ from django.conf import settings
 
 urlpatterns = patterns('',
     url(r'^skyshaker/', include('skyshaker.urls')),
+    url(r'^community-guidelines/$', views.community, name='community'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.index, name='index'),
     url(r'^donate/', views.donate, name='donate'),

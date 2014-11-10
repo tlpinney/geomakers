@@ -4,6 +4,7 @@ from django.conf import settings
 
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
+    url(r'^community-guidelines/$', views.community, name='community'),
     url(r'projects/(?P<slug>[^\./]+)$', views.project, name='project'),
     url(r'projects/(?P<slug>[^\./]+)/edit$', views.projectEdit, name='projectEdit'),
     url(r'^register/$', views.register, name='register'),

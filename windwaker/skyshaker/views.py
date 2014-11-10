@@ -12,6 +12,10 @@ import json, re, requests
 from bs4 import BeautifulSoup
 from django.template.defaultfilters import slugify
 
+def community(request):
+    return render(request, 'skyshaker/community-guidelines.html')
+
+
 @login_required
 def contribute(request):
     print 'starting view: contribute'

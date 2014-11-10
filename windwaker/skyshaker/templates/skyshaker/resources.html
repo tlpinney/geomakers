@@ -1,5 +1,14 @@
 {% extends "skyshaker/base.html" %}
 {% load staticfiles %}
 {% block content %}
+<div id="resources-middle">
+{% for resource in resources %}
+<p>
+{% if resource.title %}<b>{{ resource.title }}</b>{% endif %}{% if resource.url %} at <a href="{{ resource.url }}">{{ resource.url }}</a>{% endif %}
+</br>
+{% if resource.description %}{{ resource.description }}{% endif %}
+</p>
+{% endfor %}
+</div>
 
 {% endblock %}

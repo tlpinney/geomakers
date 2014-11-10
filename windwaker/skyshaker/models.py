@@ -60,9 +60,9 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     location = models.CharField(max_length=200, null=True, blank=True)
-    facebook = models.URLField(default="", null=True, blank=True)
-    twitter = models.URLField(default="", null=True, blank=True)
-    linkedin = models.URLField(default="", null=True, blank=True)
+    facebook = models.CharField(max_length=200, null=True, blank=True)
+    twitter = models.CharField(max_length=200, null=True, blank=True)
+    linkedin = models.CharField(max_length=200, null=True, blank=True)
     picture = models.ImageField(upload_to="images", null=True, blank=True, default=settings.STATIC_URL+"skyshaker/img/user/default.jpg")
     def __str__(self):
         return self.user.username
@@ -77,6 +77,7 @@ class Video(models.Model):
         ordering = ['title']
 
 class Resource(models.Model):
+    typeOfResource = models.CharField(max_length=200,null=True, blank=True, choices=(("Mapping_and_Software","Mapping and Software"),("Hardware_and_Software","Hardware and Software"),("Maker_Resources","Maker Resources"), ("Licensing_Resources", "Licensing Resources")))
     title = models.CharField(max_length=200, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     url = models.URLField(null=True, blank=True)
