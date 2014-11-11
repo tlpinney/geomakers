@@ -70,7 +70,7 @@ footer table td div img{height: 25px;}
 #donate-pay{display: inline-block; vertical-align: top; max-width: 315px; background-color: white;padding: 20px; margin-left: 15px; text-align: left;}
 
 #project-middle{background-color: rgb(245,245,245); padding: 0px 30px 30px 30px;}
-#project-left{width: 600px; border: 2px solid rgb(85,164,241); padding: 35px 30px 15px 30px; text-align: left; border-radius: 5px; background-color: white; display: inline-block; vertical-align: left; margin-bottom: 20px;}
+#project-left{max-width: 600px; border: 2px solid rgb(85,164,241); padding: 35px 30px 15px 30px; text-align: left; border-radius: 5px; background-color: white; display: inline-block; vertical-align: left; margin-bottom: 20px; width: 100%;}
 #project-left-left{width: 48%; display: inline-block; vertical-align: top;}
 #project-left-right{width: 48%; display: inline-block; vertical-align: top; text-align: center;}
 #project-left-bottom{text-align: center;}
