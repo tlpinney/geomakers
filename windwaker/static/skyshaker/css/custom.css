@@ -27,6 +27,8 @@ footer table:last-child tbody tr td:last-child{text-align: right;}
 footer table td div img{height: 25px;}
 .footer-text{color: white;}
 
+
+#introvideo{width: 100%; max-width: 500px;}
 #home-middle{}
 #home-part-1{padding: 50px 40px 40px 40px; height: 710px;}
 #home-part-1-wrapper{max-width: 1000px;margin: 0px auto;}
