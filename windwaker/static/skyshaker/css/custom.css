@@ -91,8 +91,6 @@ footer table td div img{height: 25px;}
 #profile-middle-top-right{max-width: 600px; font-size: 10pt;}
 
 #search-middle{padding: 20px;}
-#search-show input:checked + label{border: 1px solid green;}
-#search-show label{border: 1px solid red; margin: 5px;}
 
 #search-projects{padding: 30px;}
 .search-project{height: 250px; width: 300px; border-radius: 10px; display: inline-block; vertical-align: top;}
@@ -106,6 +104,20 @@ footer table td div img{height: 25px;}
 .search-project-title{vertical-align: top; font-size: 10pt; color: white; text-shadow: 1px 1px 0 #000;}
 .search-project-author{font-size: 10pt;  color: #D9D9DE; text-shadow: 1px 1px 0 #000;}
 .search-project-datetime{display: inline-block; font-size: 8pt;}
+.cardContainer .photo{position: absolute;}
+#search-show input{display: none;}
+#search-show label{padding: 2px; border-radius: 5px; cursor: pointer; margin: 5px;}
+#search-show label[for=show-GeoDreams]{border-color: #8F0AD7; border: 2px solid #8F0AD7;}
+#search-show label[for=show-GeoDreams]:hover, #search-show input:checked + label[for=show-GeoDreams]{background-color: #8F0AD7; color: white;}
+#search-show label[for=show-GeoRecipes]{border-color: #8F0AD7; border: 2px solid #0A90D7;}
+#search-show label[for=show-GeoRecipes]:hover, #search-show input:checked + label[for=show-GeoRecipes]{background-color: #0A90D7; color: white;}
+#search-show label[for=show-GeoBoosts]{border-color: #8F0AD7; border: 2px solid #0AD78C;}
+#search-show label[for=show-GeoBoosts]:hover, #search-show input:checked + label[for=show-GeoBoosts]{background-color: #0AD78C; color: white;}
+#search-sort_by input{display: none;}
+#search-sort_by label:hover, #search-sort_by input:checked + label{background-color: green; color: white; border: 2px solid green}
+#search-sort_by label{padding: 2px; border-radius: 5px; cursor: pointer; margin: 5px; border: 2px solid red;}
+
+
 
 .submit-header{font-size: 18pt; color: white; margin-bottom: 10px;}
 #contribute-middle{background-color: #8F0AD7; padding: 30px;}
