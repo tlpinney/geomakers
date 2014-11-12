@@ -26,6 +26,16 @@ footer table:last-child tbody tr td{width: 50%;}
 footer table:last-child tbody tr td:last-child{text-align: right;}
 footer table td div img{height: 25px;}
 .footer-text{color: white;}
+#footer input{display:none;}
+
+@media (max-width: 900px) {
+#footer{text-align: center;}
+#footer label{cursor: pointer;}
+[name=footer-button] ~ a{display: none;}
+[name=footer-button]:checked ~ a{display: block;}
+#footer .col-sm-offset-1{margin-left: 0px;}
+#footer .col-sm-2, #footer .col-sm-10{width: 100%;}
+}
 
 
 #introvideo{width: 100%; max-width: 500px;}
@@ -110,13 +120,13 @@ footer table td div img{height: 25px;}
 #search-show input{display: none;}
 #search-show label{padding: 2px; border-radius: 5px; cursor: pointer; margin: 5px;}
 #search-show label[for=show-GeoDreams]{border-color: #8F0AD7; border: 2px solid #8F0AD7;}
-#search-show label[for=show-GeoDreams]:hover, #search-show input:checked + label[for=show-GeoDreams]{background-color: #8F0AD7; color: white;}
+#search-show input:checked + label[for=show-GeoDreams]{background-color: #8F0AD7; color: white;}
 #search-show label[for=show-GeoRecipes]{border-color: #8F0AD7; border: 2px solid #0A90D7;}
-#search-show label[for=show-GeoRecipes]:hover, #search-show input:checked + label[for=show-GeoRecipes]{background-color: #0A90D7; color: white;}
+#search-show input:checked + label[for=show-GeoRecipes]{background-color: #0A90D7; color: white;}
 #search-show label[for=show-GeoBoosts]{border-color: #8F0AD7; border: 2px solid #0AD78C;}
-#search-show label[for=show-GeoBoosts]:hover, #search-show input:checked + label[for=show-GeoBoosts]{background-color: #0AD78C; color: white;}
+#search-show input:checked + label[for=show-GeoBoosts]{background-color: #0AD78C; color: white;}
 #search-sort_by input{display: none;}
-#search-sort_by label:hover, #search-sort_by input:checked + label{background-color: green; color: white; border: 2px solid green}
+#search-sort_by input:checked + label{background-color: green; color: white; border: 2px solid green}
 #search-sort_by label{padding: 2px; border-radius: 5px; cursor: pointer; margin: 5px; border: 2px solid red;}
 
 
