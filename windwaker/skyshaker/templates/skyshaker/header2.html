@@ -1,5 +1,5 @@
 <ul class="nav nav-tabs" role="tablist">
-    {% if user.is_authenticated %}<li class="active"><a href="#profile">Your Profile</a></li>{% endif %}
+    {% if user.is_authenticated %}<li class="active"><a href={% url 'profile' user.username %} >Your Profile</a></li>{% endif %}
     {% if user.is_authenticated %}<li><a href={% url 'contribute' %}>Contribute</a></li>{% endif %}
     <!--
     <li><a href={% url 'contribute' %} role="tab" data-toggle="tab">GeoDreamer</a></li>
