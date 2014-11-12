@@ -3,7 +3,7 @@
 {% block content %}
 <div id="project-middle">
 <h3>{{ project.title }}</h3>
-<div><a href="{% url 'projectEdit' project.slug %}">Edit</a></div>
+{% if user.id == project.owner.id %}<div><a href="{% url 'projectEdit' project.slug %}">Edit</a></div>{% endif %}
 <div id="project-left">
     <div id="project-left-left">
         <h4>About</h4>
