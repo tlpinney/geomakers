@@ -9,6 +9,7 @@ header table tr td{vertical-align: middle;}
 #header-title{width: 300px; border-right: 1px solid rgb(221,222,226); padding-left: 15px;}
 #header-search{text-align: center;}
 #header-donate{padding-right: 40px; text-align: right;}
+#gm-navbar-brand img{height: 50px;}
 
 #header2{height: 40px; background-color: rgb(247,247,247); border-bottom: 1px solid rgb(204,204,204); text-align: center;}
 #header2 a{display: inline-block; height: 40px; cursor: pointer;}
@@ -86,6 +87,7 @@ footer table td div img{height: 25px;}
 #project-left-left{width: 48%; display: inline-block; vertical-align: top;}
 #project-left-right{width: 48%; display: inline-block; vertical-align: top; text-align: center;}
 #project-left-bottom{text-align: center;}
+.project-image{width: 100%;}
 .project-image-caption{font-size: 10pt;}
 #project-right{display: inline-block; vertical-align: top; padding: 0px 30px 30px 30px; margin-bottom: 20px;}
 #project-right > div{background-color: white; border: 1px solid rgb(230,230,230); padding: 0px 20px 20px 20px; margin-bottom: 20px;}

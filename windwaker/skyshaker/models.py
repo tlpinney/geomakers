@@ -101,7 +101,7 @@ def updateVideoEmbed(sender, instance, **kwargs):
     instance_url = str(instance.url)
     if 'youtube' in instance_url:
         idOfYoutubeVideo = re.search('(?<=v=)\w+', instance_url).group(0)
-        instance.embed = '<iframe width="560" height="315" src="//www.youtube.com/embed/' + idOfYoutubeVideo + '" frameborder="0" allowfullscreen></iframe>'
+        instance.embed = '<iframe width="100%" height="315" src="//www.youtube.com/embed/' + idOfYoutubeVideo + '" frameborder="0" allowfullscreen></iframe>'
     elif 'vimeo' in instance.url:
         idOfVimeoVideo = re.search('(?<=com/)\w+', instance_url).group(0)
         instance.embed = '<iframe src="//player.vimeo.com/video/' + idOfVimeoVideo + '" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>'
