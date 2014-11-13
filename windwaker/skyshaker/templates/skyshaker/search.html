@@ -1,4 +1,5 @@
 {% extends "skyshaker/base.html" %}
+{% load staticfiles %}
 {% block content %}
 
 <div id="search-middle">
@@ -16,57 +17,36 @@
         <span>Sort by: </span>
         <input type="radio" id="sort-NewestToOldest" name="sort" checked><label for="sort-NewestToOldest">Newest to Oldest</label>
         <input type="radio" id="sort-OldestToNewest" name="sort" checked><label for="sort-OldestToNewest">Oldest to Newest</label>
-        <input type="radio" id="sort-Rating" name="sort" checked><label for="sort-Rating">Rating</label>
+        <!--<input type="radio" id="sort-Rating" name="sort" checked><label for="sort-Rating">Rating</label>-->
     </div>
-</div>
-<article id="explore" class="container-fluid">
-    <div class="row">
-        <div id="gallery">
-            {% for project in projects %}
-            <div class="col-sm-3 search-project{% if project.typeOfProject == 'GeoDream' %} search-project-GeoDream{% elif project.typeOfProject == 'GeoRecipe' %} search-project-GeoRecipe{% elif project.typeOfProject == 'GeoBoost' %} search-project-GeoBoost{% endif %}">
-                <ul class="contentcard">
-                    <li class="card">
-                        <ul class="cardContainer">
-                            <li class="photo">
-                                <img src="{{ project.images.all.0.image.url }}" />
-                            </li>
-                            <li class="price">
-                                <div class="row">
-                                    <div class="col-sm-1">
-                                        <img src="{{ project.owner.userprofile.picture.url }}" />
-                                    </div>
-                                    <div class="col-sm-11">
-                                        <p>{{ project.title }}</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <ul class="options">
-                                    <li style="display:none;">{{ project.updated_at|timesince }} ago</li>
-                                    <li><span>{% if project.abstract %}{{project.abstract}}{% endif %}</span></li>
-                                    <li>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star-empty"></span>
-                                        <span class="glyphicon glyphicon-star-empty"></span>
-                                        <span>(124)</span>
-                                    </li>
-                                    <li>556 <span>builds</span></li>
-                                    <li>4,100 <span>shoutouts</span></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul> <!-- End ul#plans -->
+<div id="search-results">
+    {% for project in projects %}
+      <a class="search-project-a" href={% url 'profile' project.slug %}>
+        <div class="search-project search-project-{{ project.typeOfProject }}">
+            <img class="search-project-image" src="{% if project.images.all.0.image.url %}{{ project.images.all.0.image.url }}{% else %}{% if project.typeOfProject == 'GeoDream' %}{% static 'skyshaker/img/project/GeoDream.png' %}{% elif project.typeOfProject == 'GeoRecipe' %}{% static 'skyshaker/img/project/GeoRecipe.png' %}{% elif project.typeOfProject == 'GeoBoost' %}{% static 'skyshaker/img/project/GeoBoost.png' %}{% else %}{% static 'skyshaker/img/project/default_project_img.png' %}{% endif %}{% endif %}">
+            <div class="search-project-middle search-project-middle-{{ project.typeOfProject }}">
+                <img class="search-project-image-owner" src="{{ project.owner.userprofile.picture.url }}"/>
+                <div class="search-project-title">{{ project.title }}</div>
             </div>
-            {% endfor %}
-        </div>
-    </div>
-<article>
+            <div class="search-project-datetime">{{ project.updated_at|timesince }} ago</div>
+            <div class="search-project-abstract">{% if project.abstract %}{{project.abstract}}{% endif %}</div>
+            <!--
+            <div>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star-empty"></span>
+                <span class="glyphicon glyphicon-star-empty"></span>
+                <span>(124)</span>
+            </div>
+            <div class="search-project-likes">4,100 <span>shoutouts</span></div>
+            -->
+        </div><!-- end search-project -->
+      </a>
+    {% endfor %}
+</div><!-- end search-results -->
+</div><!-- end search-middle -->
 <script>
-
-
 
 var projectsAsJSON = {% autoescape off %} {{ json }} {% endautoescape %}
 
@@ -132,8 +112,8 @@ var sort_by_date_oldest_to_newest = function (one,two){
     console.log("starting sort_by_date with");
     modifier = 1;
     alert(one);
-    a = one.childNodes[3].childNodes[3].childNodes[3].textContent;
-    b = two.childNodes[3].childNodes[3].childNodes[3].textContent;
+    a = one.getElementsByClassName('search-project-datetime')[0].textContent;
+    b = two.getElementsByClassName('search-project-datetime')[0].textContent;
     aYear = getDateElement(a, "year");
     bYear = getDateElement(b, "year");
     aMonth = getDateElement(a, "month");
@@ -154,8 +134,8 @@ var sort_by_date_newest_to_oldest = function (one,two){
     console.log("starting sort_by_date with");
     modifier = -1;
     alert(one);
-    a = one.childNodes[3].childNodes[3].childNodes[3].textContent;
-    b = two.childNodes[3].childNodes[3].childNodes[3].textContent;
+    a = one.getElementsByClassName('search-project-datetime')[0].textContent;
+    b = two.getElementsByClassName('search-project-datetime')[0].textContent;
     aYear = getDateElement(a, "year");
     bYear = getDateElement(b, "year");
     aMonth = getDateElement(a, "month");
@@ -183,13 +163,13 @@ var sortProjects = function (sortfunction){
     alert("starting sortProjects");
     console.log(projects);
 
-    ul = document.getElementById("search-projects")
+    ul = document.getElementById("search-results")
     var new_ul = ul.cloneNode(false);
     
     // Add all projects to an array
     var lis = [];
     for(var i = ul.childNodes.length; i--;){
-        if(ul.childNodes[i].nodeName === 'DIV')
+        if(ul.childNodes[i].nodeName === 'A')
             lis.push(ul.childNodes[i]);
     }
 

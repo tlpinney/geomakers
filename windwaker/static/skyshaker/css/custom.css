@@ -105,17 +105,21 @@ footer table td div img{height: 25px;}
 #search-middle{padding: 20px;}
 
 #search-projects{padding: 30px;}
-.search-project{height: 250px; width: 300px; border-radius: 10px; display: inline-block; vertical-align: top;}
+.search-project{height: 250px; width: 300px; border-radius: 10px; display: inline-block; vertical-align: top; margin: 10px; text-align: left}
+a:hover .search-project{border-color: green;}
 .search-project-GeoDream{border: 2px solid #8F0AD7;}
 .search-project-GeoRecipe{border: 2px solid #0A90D7;}
 .search-project-GeoBoost{border: 2px solid #0AD786;}
-.search-project-image{position: absolute; height: 200px; width: 300px; z-index: -1;}
+.search-project-middle-GeoDream{background-color: #8F0AD7;}
+.search-project-middle-GeoRecipe{background-color: #0A90D7;}
+.search-project-middle-GeoBoost{background-color: #0AD786;}
+.search-project-image {height: 100px; width: 100%; z-index: -1;}
 .search-project-top{padding: 2px;}
-.search-project-image-owner{width: 30px; height: 30px; border-radius: 50px; border:2px solid white;}
-.search-project-text{display: inline-block; vertical-align: top; color: green;}
-.search-project-title{vertical-align: top; font-size: 10pt; color: white; text-shadow: 1px 1px 0 #000;}
+.search-project-image-owner{width: 40px; height: 40px; border-radius: 50px; border:2px solid white; display: inline-block; position: absolute;}
+.search-project-abstract{overflow-y: hidden; height: 80px; padding: 5px;}
+.search-project-title{vertical-align: middle; font-size: 10pt; color: white; text-shadow: 1px 1px 0 #000; display: inline-block; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; width: 100%; padding-left: 50px; padding-top: 12px;}
 .search-project-author{font-size: 10pt;  color: #D9D9DE; text-shadow: 1px 1px 0 #000;}
-.search-project-datetime{display: inline-block; font-size: 8pt;}
+.search-project-datetime{display: none;}
 .cardContainer .photo{position: absolute;}
 #search-show input{display: none;}
 #search-show label{padding: 2px; border-radius: 5px; cursor: pointer; margin: 5px;}
@@ -128,7 +132,12 @@ footer table td div img{height: 25px;}
 #search-sort_by input{display: none;}
 #search-sort_by input:checked + label{background-color: green; color: white; border: 2px solid green}
 #search-sort_by label{padding: 2px; border-radius: 5px; cursor: pointer; margin: 5px; border: 2px solid red;}
-
+.searchCard{margin: 0; padding: 0; list-style: none;}
+.cardContainer .photo img{height: 111px; width: 273px; position: relative}
+.cardContainer .price .row img{height: 40px; width: 40px;}
+.cardContainer .options li.search-project-abstract{text-overflow: ellipsis;  color: #979797; font-size: 10pt; font-weight: 400; white-space: nowrap; overflow: hidden;}
+.search-project-middle{height: 50px; width: 100%; padding: 5px; box-shadow: inset 0px 0px 1px 1px #888;}
+#search-results{text-align: center; min-height: 300px;}
 
 
 .submit-header{font-size: 18pt; color: white; margin-bottom: 10px;}
