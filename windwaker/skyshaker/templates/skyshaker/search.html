@@ -21,7 +21,7 @@
     </div>
 <div id="search-results">
     {% for project in projects %}
-      <a class="search-project-a" href={% url 'profile' project.slug %}>
+      <a class="search-project-a" href={% url 'project' project.slug %}>
         <div class="search-project search-project-{{ project.typeOfProject }}">
             <img class="search-project-image" src="{% if project.images.all.0.image.url %}{{ project.images.all.0.image.url }}{% else %}{% if project.typeOfProject == 'GeoDream' %}{% static 'skyshaker/img/project/GeoDream.png' %}{% elif project.typeOfProject == 'GeoRecipe' %}{% static 'skyshaker/img/project/GeoRecipe.png' %}{% elif project.typeOfProject == 'GeoBoost' %}{% static 'skyshaker/img/project/GeoBoost.png' %}{% else %}{% static 'skyshaker/img/project/default_project_img.png' %}{% endif %}{% endif %}">
             <div class="search-project-middle search-project-middle-{{ project.typeOfProject }}">
@@ -55,7 +55,7 @@ console.log(projects);
 var searchBox = document.getElementById("search-words");
 var geodreams = document.getElementsByClassName("search-project-GeoDream");
 var georecipes = document.getElementsByClassName("search-project-GeoRecipe");
-var geoboost = document.getElementsByClassName("search-project-GeoBoost");
+var geoboosts = document.getElementsByClassName("search-project-GeoBoost");
 var showGeoDreams = document.getElementById("show-GeoDreams");
 var showGeoRecipes = document.getElementById("show-GeoRecipes");
 var showGeoBoosts = document.getElementById("show-GeoBoosts");
@@ -111,7 +111,7 @@ var getDateElement = function (inputString, inputSearch){
 var sort_by_date_oldest_to_newest = function (one,two){
     console.log("starting sort_by_date with");
     modifier = 1;
-    alert(one);
+    //alert(one);
     a = one.getElementsByClassName('search-project-datetime')[0].textContent;
     b = two.getElementsByClassName('search-project-datetime')[0].textContent;
     aYear = getDateElement(a, "year");
@@ -133,7 +133,7 @@ var sort_by_date_oldest_to_newest = function (one,two){
 var sort_by_date_newest_to_oldest = function (one,two){
     console.log("starting sort_by_date with");
     modifier = -1;
-    alert(one);
+    //alert(one);
     a = one.getElementsByClassName('search-project-datetime')[0].textContent;
     b = two.getElementsByClassName('search-project-datetime')[0].textContent;
     aYear = getDateElement(a, "year");
@@ -160,7 +160,7 @@ var sort_by_rating = function (a,b){
 }
 
 var sortProjects = function (sortfunction){
-    alert("starting sortProjects");
+    //alert("starting sortProjects");
     console.log(projects);
 
     ul = document.getElementById("search-results")
