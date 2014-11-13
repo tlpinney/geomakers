@@ -1,8 +1,9 @@
 {% load staticfiles %}
         <article id="footer" class="container-fluid">
-            <div class="row">
+            <div>
                 <div class="col-sm-offset-1 col-sm-2">
-                    <h4 class="footer-text">About</h4>
+                    <input type="radio" id="footer-button-about" name="footer-button">
+                    <label for="footer-button-about"><h4 class="footer-text">About</h4></label>
                     <a href="mailto:info@geomakers.org"><h5 class="footer-text">Contact</h5></a>
                     <a href={% url 'team' %}><h5 class="footer-text">Team</h5></a>
                     <a href={% url 'donate' %}><h5 class="footer-text">Donate</h5></a>
@@ -10,26 +11,29 @@
                     <a href={% url 'index' %}><h5 class="footer-text">What is GeoMakers?</h5></a>
                 </div>
                 <div class="col-sm-2">
-                    <a href={% url 'contribute' %}><h4 class="footer-text">Contributors</h4></a>
+                    <input type="radio" id="footer-button-contributors" name="footer-button">
+                    <label for="footer-button-contributors"><h4 class="footer-text">Contributors</h4></label>
                     <a href={% url 'contribute' %}><h5 class="footer-text">Geo Dreamers</h5></a>
                     <a href={% url 'contribute' %}><h5 class="footer-text">Geo Makers</h5></a>
                     <a href={% url 'contribute' %}><h5 class="footer-text">Geo Boosters</h5></a>
                     <a href={% url 'contribute' %}><h5 class="footer-text">Geo Contests</h5></a>
                 </div>
                 <div class="col-sm-2">
-                    <h4>Help</h4>
-                    <h5>Terms of Use</h5>
-                    <h5>Privacy Policy</h5>
+                    <input type="radio" id="footer-button-support" name="footer-button">
+                    <label for="footer-button-support"><h4>Help</h4></label>
+                    <a href=""><h5 class="footer-text">Terms of Use</h5></a>
+                    <a href=""><h5 class="footer-text">Privacy Policy</h5></a>
                     <a href="mailto:support@geomakers.org"><h5 class="footer-text">Support</h5></a>
                     <a href={% url 'community' %}><h5 class="footer-text">Community Guidelines</h5></a>
                 </div>
                 <div class="col-sm-2">
-                    <h4>Connect</h4>
+                    <input type="radio" id="footer-button-connect" name="footer-button">
+                    <label for="footer-button-connect"><h4>Connect</h4></label>
                     <a href="https://www.facebook.com/GeoMakerRevolution"><h5 class="footer-text">Facebook</h5></a>
-                    <a href="https://twitter.com/geomakers"<h5 class="footer-text">Twitter</h5></a>
+                    <a href="https://twitter.com/geomakers"><h5 class="footer-text">Twitter</h5></a>
                     <a href="https://instagram.com/geomakers"><h5 class="footer-text">Instagram</h5></a>
                     <a href="https://www.linkedin.com/company/geomakers"><h5 class="footer-text">LinkedIn</h5></a>
-                    <h5 class="footer-text">YouTube</h5>
+                    <a href=""><h5 class="footer-text">YouTube</h5></a>
                     <a href="https://vine.co/u/1081304182532861952"><h5 class="footer-text">Vine</h5></a>
                 </div>
                 <div class="col-sm-offset-1 col-sm-10" style="border-top:1px solid white">
