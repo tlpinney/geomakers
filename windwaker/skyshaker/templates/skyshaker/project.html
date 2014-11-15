@@ -16,10 +16,13 @@
         {% endfor %}
     </div>
     <div id="project-left-right">
+        <img class="project-image" src="{% if project.images.all.0.image.url %}{{ project.images.all.0.image.url }}{% else %}{% if project.typeOfProject == 'GeoDream' %}{% static 'skyshaker/img/project/GeoDream.png' %}{% elif project.typeOfProject == 'GeoRecipe' %}{% static 'skyshaker/img/project/GeoRecipe.png' %}{% elif project.typeOfProject == 'GeoBoost' %}{% static 'skyshaker/img/project/GeoBoost.png' %}{% else %}{% static 'skyshaker/img/project/default_project_img.png' %}{% endif %}{% endif %}">
+	<!--
         {% for image in project.images.all %}
             <img src="{{image.image.url}}"/>
             <p class="project-image-caption">{{image.caption}}</p>
         {% endfor %}
+        -->
     </div>
     <div id="project-left-bottom">
         {% for video in project.videos.all %}

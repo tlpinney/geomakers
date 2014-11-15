@@ -25,9 +25,14 @@ class Link(models.Model):
 class MakerSpace(models.Model):
     name = models.CharField(max_length=200)
     address = models.TextField()
-    lat = models.DecimalField(max_digits=8, decimal_places=5)
-    lon = models.DecimalField(max_digits=8, decimal_places=5)
+    state = models.CharField(max_length=200, null=True, blank=True)
+    lat = models.DecimalField(max_digits=8, decimal_places=5, null=True, blank=True)
+    lon = models.DecimalField(max_digits=8, decimal_places=5, null=True, blank=True)
     url = models.URLField(default="", null=True, blank=True)
+    def __str__(self):
+        return self.name
+    class Meta:
+        ordering = ['name']
 
 class Project(models.Model):
     owner = models.ForeignKey(User, null=True, blank=True)

@@ -87,6 +87,12 @@ And enter your password twice.
 sudo -u geomakers python /home/geomakers/geomakers/windwaker/manage.py createsuperuser;
 ```
 
+####Install Social Auth
+This is so people can login with their Google and Facebook accounts
+```
+sudo -u geomakers pip install python-social-auth
+```
+
 ####Install WSGI
 ```
 sudo apt-get install libapache2-mod-wsgi
@@ -106,6 +112,8 @@ sudo ln -s /etc/apache2/sites-available/geomakers.conf /etc/apache2/sites-enable
 ```
 sudo service apache2 restart
 ```
+
+
 
 ####Run the Development Server
 ```

@@ -22,6 +22,8 @@ urlpatterns = patterns('',
     url(r'^login/$', views.user_login, name='login'),
     url(r'^register/$', views.register, name='register'),
 #    url(r'^geodream/$', views.geodream, name='geodream'),
+    url('', include('social.apps.django_app.urls', namespace='social')),
+    url('', include('django.contrib.auth.urls', namespace='auth')),
 )
 
 if settings.DEBUG:

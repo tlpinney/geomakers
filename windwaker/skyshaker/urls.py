@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import patterns, url, include
 from skyshaker import views
 from django.conf import settings
 
@@ -19,6 +19,8 @@ urlpatterns = patterns('',
     url(r'^team/$', views.team, name='team'),
     url(r'^donate/$', views.donate, name='donate'),
 #    url(r'^geodream/$', views.geodream, name='geodream'),
+    url('', include('social.apps.django_app.urls', namespace='social')),
+    url('', include('django.contrib.auth.urls', namespace='auth')),
 )
 
 if settings.DEBUG:
