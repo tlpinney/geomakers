@@ -252,6 +252,13 @@ def register(request):
             # Update our variable to tell the template registration was successful.
             registered = True
 
+            # Now auto-login after registering
+            new_user = authenticate(username=request.POST['username'], password=request.POST['password'])
+            login(request, new_user)
+
+            # Now, redirect to main page
+            return HttpResponseRedirect("/")
+
         # Invalid form or forms - mistakes or something else?
         # Print problems to the terminal.
         # They'll also be shown to the user.
