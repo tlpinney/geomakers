@@ -167,3 +167,13 @@ h3{color: rgb(120,120,120); font-size: 20px; text-align: left;}
 
 #community-middle{padding: 30px;}
 #resources-middle{padding: 30px;}
+#makerspaces-middle{padding: 30px;}
+.makerspace-name{font-weight: bold; width: 100%;}
+.makerspaces-state-input{display: none;}
+.makerspaces-state{font-weight: bold; font-size: 20pt; width: 100%; background-color: #8F0AD7; color: whitesmoke; padding: 5px; box-shadow: 2px 2px 2px 2px black;}
+.makerspaces-in-state{padding: 5px;}
+@media (max-width: 900px) {
+    .makerspaces-state{cursor: pointer;}
+    input.makerspaces-state-input + .makerspaces-in-state{display:none;}
+    input.makerspaces-state-input:checked + .makerspaces-in-state{display: block;}
+}

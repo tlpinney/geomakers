@@ -89,8 +89,12 @@ def index(request):
     return render(request, 'skyshaker/index.html')
 
 def makerspaces(request):
-    makerspaces = MakerSpace.objects.all()
-    return render(request, 'skyshaker/makerspaces.html', {'makerspaces': makerspaces})
+    states_makerspaces = []
+    for state in MakerSpace.objects.order_by("state").values_list('state', flat=True).distinct():
+        if state != "":
+            states_makerspaces.append([str(unicode(state)).encode('utf-8'),MakerSpace.objects.filter(state=state)])
+
+    return render(request, 'skyshaker/makerspaces.html', {'lsm': states_makerspaces})
 
 def profile(request, slug):
     user = get_object_or_404(User, username=slug)
