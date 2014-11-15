@@ -163,6 +163,11 @@ h3{color: rgb(120,120,120); font-size: 20px; text-align: left;}
 .bg-blue{background-color: #0A90D7;}
 .bg-green{background-color: #0AD786;}
 
+#register-middle{padding: 30px;}
+.register-part{width: 100%; margin: 30px 0;}
+.register-part label{width: 100%;}
+.register-part input, .register-part textarea {width: 100%; max-width: 500px;}
+
 #login-middle{padding: 30px;}
 .login-part{width: 100%; margin: 30px 0;}
 .login-part label{width: 100%;}
