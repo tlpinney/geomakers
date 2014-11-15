@@ -2,7 +2,13 @@
 {% block content %}
 <div id="register-middle">
 {% if registered %}
-Thanks for registering
+Registration Successful!!
+
+We will redirect you to the homepage in 3 seconds.
+
+<script>
+    window.setTimeout(function(){window.location.href="/";}, 3000);
+</script>
 <a href="/skyshaker/">Return to the homepage</a>
 {% else %}
 

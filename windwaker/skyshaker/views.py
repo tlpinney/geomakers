@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render, render_to_response
 from django.template import RequestContext
-from skyshaker.models import Image, Link, MakerSpace, Project, Resource, Tag, TeamMember, Video, UserProfile
+from skyshaker.models import Image, Link, MakerSpace, Project, Resource, Tag, TeamMember, Video, UserProfile, createProfile
 from skyshaker.forms import UserForm, UserProfileForm, ContributeForm, ImageForm
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
@@ -11,6 +11,8 @@ from django.core import serializers
 import json, re, requests
 from bs4 import BeautifulSoup
 from django.template.defaultfilters import slugify
+from django.db.models.signals import post_save
+
 
 def community(request):
     return render(request, 'skyshaker/community-guidelines.html')
@@ -85,6 +87,19 @@ def contribute(request):
 def donate(request):
     return render(request, 'skyshaker/donate.html')
 
+def geoboosts(request):
+    geoboosts = Project.objects.filter(typeOfProject="GeoBoost")
+    return render(request, 'skyshaker/geoboosts.html', {'geoboosts': geoboosts})
+
+def geodreams(request):
+    geodreams = Project.objects.filter(typeOfProject="GeoDream")
+    return render(request, 'skyshaker/geodreams.html', {'geodreams': geodreams})
+
+def georecipes(request):
+    georecipes = Project.objects.filter(typeOfProject="GeoRecipe")
+    return render(request, 'skyshaker/georecipes.html', {'georecipes': georecipes})
+
+
 def index(request):
     return render(request, 'skyshaker/index.html')
 
@@ -98,12 +113,15 @@ def makerspaces(request):
 
 def profile(request, slug):
     user = get_object_or_404(User, username=slug)
-    userProfile = get_object_or_404(UserProfile, user=user)
+    userProfile = UserProfile.objects.get(user=user)
+    if userProfile is None:
+        if user.username == slug:
+            userProfile = UserProfile.objects.create(user=user)
     return render(request, 'skyshaker/profile.html', {'user': user, 'userProfile': userProfile})
 
 def profileEdit(request, slug):
     user = get_object_or_404(User, username=slug)
-    userProfile = get_object_or_404(UserProfile, user=user)
+    userProfile = UserProfile.objects.get(user=user)
     return render(request, 'skyshaker/profile.html', {'user': user, 'userProfile': userProfile})
 
 def project(request, slug):
@@ -220,6 +238,8 @@ def register(request):
 
     # If it's a HTTP POST, we're interested in processing form data.
     if request.method == 'POST':
+        post_save.disconnect(createProfile, sender=User)
+
         # Attempt to grab information from the raw form information.
         # Note that we make use of both UserForm and UserProfileForm.
         user_form = UserForm(data=request.POST)
@@ -248,13 +268,15 @@ def register(request):
 
             # Now we save the UserProfile model instance.
             profile.save()
-
+            
             # Update our variable to tell the template registration was successful.
             registered = True
 
             # Now auto-login after registering
             new_user = authenticate(username=request.POST['username'], password=request.POST['password'])
             login(request, new_user)
+
+            post_save.connect(createProfile, sender=User)
 
             # Now, redirect to main page
             return HttpResponseRedirect("/")
@@ -264,6 +286,7 @@ def register(request):
         # They'll also be shown to the user.
         else:
             print user_form.errors, profile_form.errors
+            post_save.connect(createProfile, sender=User)
 
     # Not a HTTP POST, so we render our form using two ModelForm instances.
     # These forms will be blank, ready for user input.

@@ -114,6 +114,10 @@ def updateVideoEmbed(sender, instance, **kwargs):
     instance.save()
     post_save.connect(updateVideoEmbed, sender=Video)
 
+# creates a user profile if a new user exists without one
+def createProfile(sender, instance, **kwargs):
+    UserProfile.objects.get_or_create(user=instance)
+
 def updateProject(sender, instance, **kwargs):
     # add slug if doesn't exist    
     if instance.slug == "":
@@ -145,3 +149,4 @@ def updateImage(sender, instance, **kwargs):
 post_save.connect(updateVideoEmbed, sender=Video)
 post_save.connect(updateProject, sender=Project)
 post_save.connect(updateImage, sender=Image)
+post_save.connect(createProfile, sender=User)

@@ -11,12 +11,21 @@
     padding-top: 30px;
 }
 
+#todolist {
+    background-color: #f8f8f8;
+    padding: 20px 50px;
+}
+
 #services {
     margin-left: 70px;
     margin-right: 70px;
     padding: 20px;
 }
 
+
+.jumbotron h1{
+    font-size: 3em;
+}
 .service-block{
   padding: 20px;
   text-align: center;
@@ -69,6 +78,11 @@
 .service-block-dream:hover {
     background: #8F0AD7;
     color: white;
+}
+
+.service-block img{
+    background-color: white;
+    border-radius: 25%;
 }
 
 .service-block-make:hover {
