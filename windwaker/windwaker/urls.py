@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     url(r'^team/$', views.team, name='team'),
     url(r'^donate/$', views.donate, name='donate'),
     url(r'^login/$', views.user_login, name='login'),
+    url(r'^register/$', views.register, name='register'),
 #    url(r'^geodream/$', views.geodream, name='geodream'),
 )
 
