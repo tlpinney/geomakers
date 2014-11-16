@@ -23,7 +23,7 @@ sudo apt-get install -y apache2-dev curl vim git postgresql libpq-dev postgresql
 
 #### Create GeoMakers User for Ubuntu Machine
 ```
-sudo adduser geomakers
+sudo useradd geomakers
 ```
 
 #### Create geomakers User for Postgres
@@ -78,7 +78,7 @@ The following command will prompt you for a username and email address.
 Enter ```admin``` as username and enter your email address.
 And enter your password twice.
 ```
-sudo -u geomakers python /home/geomakers/geomakers/windwaker/manage.py createsuperuser;
+sudo -u geomakers python /home/geomakers/geomakers/windwaker/manage.py createsuperuser
 ```
 
 ####Install Social Auth
