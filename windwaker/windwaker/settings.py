@@ -49,7 +49,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -107,6 +106,10 @@ STATIC_URL = '/static/'
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
+STATICFILES_DIRS = (
+     os.path.join(BASE_DIR, 'static'),
+)
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #absolute path to the media directory
 
@@ -115,6 +118,10 @@ LOGIN_URL = '/login/'
 
 LOGIN_REDIRECT_URL = '/'
 
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = None
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = None
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = XXX
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = XXX
+try:
+    from local_settings import *
+except ImportError:
+    pass

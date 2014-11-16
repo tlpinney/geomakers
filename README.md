@@ -43,22 +43,9 @@ Create geomakers database
 sudo -u postgres psql -c "ALTER DATABASE geomakers OWNER TO geomakers;"
 ```
 
-###Install Psycopg
-Psycopg is a PostgreSQL database adapater for Python
+###Install Python requirements
 ```
-sudo pip install psycopg2
-```
-
-####Install Django
-Download the django code into the geomakers user's home directory. 
-```
-sudo pip install django 
-```
-
-###Install BeautifulSoup4
-BeautifulSoup4 is used to get titles for links
-```
-sudo pip install beautifulsoup4
+sudo pip install -r requirements.txt
 ```
 
 ####Download This Repo
@@ -79,12 +66,6 @@ Enter ```admin``` as username and enter your email address.
 And enter your password twice.
 ```
 sudo -u geomakers python /home/geomakers/geomakers/windwaker/manage.py createsuperuser
-```
-
-####Install Social Auth
-This is so people can login with their Google and Facebook accounts
-```
-sudo -u geomakers pip install python-social-auth
 ```
 
 ####Install WSGI
