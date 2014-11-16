@@ -118,3 +118,7 @@ LOGIN_REDIRECT_URL = '/'
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = None
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = None
 
+try:
+    from local_settings import *
+except ImportError:
+    pass
