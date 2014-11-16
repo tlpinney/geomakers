@@ -46,25 +46,19 @@ sudo -u postgres psql -c "ALTER DATABASE geomakers OWNER TO geomakers;"
 ###Install Psycopg
 Psycopg is a PostgreSQL database adapater for Python
 ```
-sudo pip install psycopg2;
+sudo pip install psycopg2
 ```
 
-####Download Django
+####Install Django
 Download the django code into the geomakers user's home directory. 
 ```
-sudo -u geomakers git clone http://github.com/django/django.git /home/geomakers/django-trunk
-```
-
-####Make Django Code Importable
-Make Django code importable into Python with the following
-```
-sudo pip install -e /home/geomakers/django-trunk/
+sudo pip install django 
 ```
 
 ###Install BeautifulSoup4
 BeautifulSoup4 is used to get titles for links
 ```
-sudo pip install beautifulsoup4;
+sudo pip install beautifulsoup4
 ```
 
 ####Download This Repo
