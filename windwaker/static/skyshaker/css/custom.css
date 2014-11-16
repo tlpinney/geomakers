@@ -152,9 +152,9 @@ a:hover .search-project{border-color: green;}
 #submit-image-img{width: 100px; height: 100px; border: 1px solid #8F0AD7; border-radius: 10px;}
 
 
-h1{color: rgb(241,75,35); font-size: 25px; text-align: left;}
-h2{color: rgb(120,120,120); font-size: 15px; text-align: left;}
-h3{color: rgb(120,120,120); font-size: 20px; text-align: left;}
+.gm-h1{color: rgb(241,75,35); font-size: 25px; text-align: left;}
+.gm-h2{color: rgb(120,120,120); font-size: 15px; text-align: left;}
+.gm-h3{color: rgb(120,120,120); font-size: 20px; text-align: left;}
 
 .button1{max-width: 180px; background-color: rgb(242,90,41); padding: 15px; border-radius: 10px; color: rgb(254,254,254); cursor: pointer; box-shadow: 1px 1px 1px #888888;}
 .button2{max-width: 120px; background-color: rgb(242,90,41); padding: 10px 15px 15px 15px; border-radius: 10px; color: rgb(254,254,254); cursor: pointer; box-shadow: 1px 1px 1px #888888; height: 40px;font-size: 15px; margin: 0 auto;}
@@ -185,3 +185,4 @@ h3{color: rgb(120,120,120); font-size: 20px; text-align: left;}
     input.makerspaces-state-input + .makerspaces-in-state{display:none;}
     input.makerspaces-state-input:checked + .makerspaces-in-state{display: block;}
 }
+#geoboosts-gallery{padding: 30px;}
